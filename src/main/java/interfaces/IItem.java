@@ -9,7 +9,7 @@ public interface IItem extends Serializable{
 	Integer getProductID();
 	void setProductID()throws IllegalArgumentException;
 	
-	Enum<PreservationCondition> getPreservationCondition();
-	void setPreservationCondition(Enum<PreservationCondition> condition)throws IllegalArgumentException;
+	PreservationCondition getPreservationCondition();
+	void setPreservationCondition(PreservationCondition condition)throws IllegalArgumentException;
 	
 }

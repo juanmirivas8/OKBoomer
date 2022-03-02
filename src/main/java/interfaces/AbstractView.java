@@ -2,7 +2,7 @@ package interfaces;
 
 import view.Escaner;
 
-public class AbstractView    {
+public abstract class AbstractView implements IGUI {
 
 	protected IDDBB db;
 	protected Escaner sc;

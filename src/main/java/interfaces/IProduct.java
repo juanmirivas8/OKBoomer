@@ -16,7 +16,7 @@ public interface IProduct extends Serializable{
 	Double getPrice();
 	void setPrice(Double price)throws IllegalArgumentException;
 	
-	Enum<MCRS> getRating();
-	void setRating(Enum<MCRS> rating)throws IllegalArgumentException;
+	MCRS getRating();
+	void setRating(MCRS rating)throws IllegalArgumentException;
 	
 }

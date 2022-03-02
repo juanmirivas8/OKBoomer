@@ -14,6 +14,8 @@ public interface IGUI {
 	
 	void printMainMenu();
 	
+	void printClientMenu();
+	
 	void printListMenu();
 	
 	void printExitProgram();
@@ -21,4 +23,6 @@ public interface IGUI {
 	void operationResult(Boolean res);
 	
 	void printClientList(Collection<IClient> l);
+	
+	int leeOpcion(int inf, int sup);
 }

@@ -1,7 +1,8 @@
 package interfaces;
 
 import java.io.Serializable;
-import java.util.Calendar;
+import java.time.LocalDateTime;
+
 
 public interface IClient extends Serializable{
 
@@ -17,8 +18,7 @@ public interface IClient extends Serializable{
 	String getPhoneNumber();
 	void setPhoneNumber(String phoneNumber)throws IllegalArgumentException;
 	
-	Calendar getRegisterTime();
-	void setRegisterTime(Calendar time)throws IllegalArgumentException;
+	LocalDateTime getRegisterTime();
 	
 	@Override
 	String toString();

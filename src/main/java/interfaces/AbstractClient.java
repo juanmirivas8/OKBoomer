@@ -1,17 +1,43 @@
 package interfaces;
 
-import java.util.Calendar;
+import java.time.LocalDateTime;
+import java.util.Objects;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlTransient;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import model.Adapters;
+
+@XmlTransient
+@XmlAccessorType(XmlAccessType.FIELD)
 public abstract class AbstractClient implements IClient{
 
-	private Integer age;
-	private String name;
-	private String DNI;
-	private String phoneNumber;
-	private Calendar registrationDate;
-	@Override
-	public abstract int hashCode();
+	protected Integer age;
+	protected String name;
+	protected String DNI;
+	protected String phoneNumber;
+	@XmlElement
+    @XmlJavaTypeAdapter(type = LocalDateTime.class, value = Adapters.LocalDateTimeBind.class)
+	protected LocalDateTime registrationDate;
 	
+	protected abstract void setRegisterTime(LocalDateTime time);
 	@Override
-	public abstract boolean equals(Object e);
+	public int hashCode() {
+		return Objects.hash(DNI);
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		AbstractClient other = (AbstractClient) obj;
+		return Objects.equals(DNI, other.DNI);
+	}
+	
+	
 }
