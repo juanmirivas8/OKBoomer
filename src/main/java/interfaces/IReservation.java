@@ -1,17 +1,18 @@
 package interfaces;
 
+import java.time.LocalDateTime;
 import java.util.Calendar;
 
 public interface IReservation {
 
-	Calendar getWithdrawalDate();
-	void setWithdrawalDate(Calendar date)throws IllegalArgumentException;
+	LocalDateTime getWithdrawalDate();
+	void setWithdrawalDate(LocalDateTime date)throws IllegalArgumentException;
 	
-	Calendar getExpectedReturnDate();
-	void setExpectedDevolutionDate(Calendar date)throws IllegalArgumentException;
+	LocalDateTime getExpectedReturnDate();
+	void setExpectedDevolutionDate(LocalDateTime date)throws IllegalArgumentException;
 	
-	Calendar getReturnDate();
-	void setDevolutionDate(Calendar date)throws IllegalArgumentException;
+	LocalDateTime getReturnDate();
+	void setDevolutionDate(LocalDateTime date)throws IllegalArgumentException;
 	
 	String getClientDNI();
 	void setClientDNI(String DNI)throws IllegalArgumentException; 

@@ -248,6 +248,32 @@ public class Escaner {
 		return retCad;
 	}
 	
+	public String readString(String mensaje,String regex)throws IllegalArgumentException {
+		System.out.println(mensaje);
+		String retCad = sc.nextLine();
+		
+		if(!retCad.matches(regex)) {
+			throw new IllegalArgumentException("Formato invalido");
+		}
+		return retCad;
+	}
+	
+	public String readStringBucle(String mensaje,String regex) {
+		String retCad = null;
+		Boolean invalido = true;
+		do {
+			invalido = true;
+			try {
+				System.out.println(mensaje);
+				retCad = this.readString(mensaje, regex);
+				invalido=false;
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+		}while(invalido);
+		return retCad;
+	}
+	
 	public <T extends Enum<T>> Enum<T> readEnum (String mensaje,Class<T> clase) throws IllegalArgumentException {
 		
 		try {

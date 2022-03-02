@@ -8,7 +8,7 @@ public abstract class AbstractProduct implements IProduct{
 	protected static IDGenerator keygen = new IDGenerator();
 	private String title;
 	private Integer id;
-	private Enum<MCRS> rating;
+	private MCRS rating;
 	private Integer length;
 	private Double price;
 	

@@ -1,6 +1,6 @@
 package interfaces;
 
-import java.util.Calendar;
+import java.time.LocalDateTime;
 
 import model.IDGenerator;
 
@@ -9,9 +9,9 @@ public abstract class AbstractReservation implements IReservation{
 	protected static IDGenerator keygen = new IDGenerator();
 	private String clientDNI;
 	private String itemID;
-	private Calendar withdrawalDate;
-	private Calendar expectedReturnDate;
-	private Calendar returnDate;
+	private LocalDateTime withdrawalDate;
+	private LocalDateTime expectedReturnDate;
+	private LocalDateTime returnDate;
 	private Boolean status;
 	private Integer id;
 	

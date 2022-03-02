@@ -8,7 +8,7 @@ public abstract class AbstractItem implements IItem{
 	protected static IDGenerator keygen = new IDGenerator();
 	private Integer productID;
 	private String ID;
-	private Enum<PreservationCondition> preservationCondition;
+	private PreservationCondition preservationCondition;
 	
 	@Override
 	public abstract int hashCode();
