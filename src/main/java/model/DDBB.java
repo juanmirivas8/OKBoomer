@@ -1,6 +1,7 @@
 package model;
 
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 
@@ -10,6 +11,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import interfaces.IClient;
 import interfaces.IDDBB;
+import sun.awt.www.content.audio.x_aiff;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -46,33 +48,38 @@ public class DDBB extends interfaces.AbstractDataBase{
 	}
 
 	@Override
-	public Collection<IClient> listOfClientsByName() {
+	public Collection<Client> listOfClientsByName() {
 		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Client> c = new ArrayList<>(clients.values());
+		c.sort((c1,c2)->c1.getName().compareToIgnoreCase(c2.getName()));
 	}
 
 	@Override
 	public Collection<IClient> listOfClientsByKey() {
 		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Client> c = new ArrayList<>(clients.values());
+		c.sort((c1,c2)->c1.getDNI().compareToIgnoreCase(c2.getDNI()));
 	}
 
 	@Override
 	public Collection<IClient> listOfClientsByPhoneNumber() {
 		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Client> c = new ArrayList<>(clients.values());
+		c.sort((c1,c2)->c1.getPhoneNumber().compareToIgnoreCase(c2.getPhoneNumber()));
 	}
 
 	@Override
 	public Collection<IClient> listOfClientsByAge() {
 		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Client> c = new ArrayList<>(clients.values());
+		c.sort((c1,c2)->c1.getAge().compareTo(c2.getAge()));
 	}
 
 	@Override
 	public Collection<IClient> listOfClientsByRegistrationDate() {
 		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Client> c = new ArrayList<>(clients.values());
+		c.sort((c1,c2)->c1.getRegisterTime().compareTo(c2.getRegisterTime()));
 	}
 
 	@Override
