@@ -20,65 +20,82 @@ public class GUI extends interfaces.AbstractView{
 		
 		return new Client(dni, name, age, phone);
 	}
-
+	//Modifica el cliente
 	@Override
 	public void modifyClient(IClient c) {
-		// TODO Auto-generated method stub
+		
 		
 	}
-
+	//Imprime el cliente
 	@Override
 	public void printClient(IClient c) {
-		// TODO Auto-generated method stub
+		System.out.println("El cliente ->  "+c);
 		
 	}
 
 	@Override
 	public void printList() {
-		// TODO Auto-generated method stub
+		
 		
 	}
-
+	//Imprime el menú
 	@Override
 	public void printMainMenu() {
-		System.out.println("[0] - Salir del programa");
-		System.out.println("[1] - Menu Clientes");
+		System.out.println("______BIENVENIDO A OKBOOMER______");
+		System.out.println(" pulse [0] para -> Salir del programa.");
+		System.out.println(" pulse [1] para -> Ir hacia el  Menu Clientes.");
+		System.out.println(" pulse [2] para -> Mostrar la lista.");
+		
 		
 	}
-
+	//Muestra por el cliente por atributo en especifico
 	@Override
 	public void printListMenu() {
-		// TODO Auto-generated method stub
+		System.out.println("____¿Por cual atributo quieres mostras la lista?____");
+		System.out.println(" pulse [0] para -> Volver hacia atrás.");
+		System.out.println(" pulse [1] para -> Mostrarla por nombre.");
+		System.out.println(" pulse [2] para -> Mostrarla por DNI.");
+		System.out.println(" pulse [3] para -> Mostrarla por phone.");
 		
 	}
-
+	//Imprime salir del programa
 	@Override
 	public void printExitProgram() {
-		// TODO Auto-generated method stub
+		System.out.println("A salido correctamente del programa");
 		
 	}
-
+	//Imprime si la operación es correcta
 	@Override
 	public void operationResult(Boolean res) {
-		// TODO Auto-generated method stub
+		
+		if(res) {
+			System.out.println("la operación ha sido exitosa");
+		} else {
+			System.out.println("la operación no ha sido exitosa");
+		}
+			
 		
 	}
-
+	
 	@Override
 	public void printClientList(Collection<IClient> l) {
-		// TODO Auto-generated method stub
+		
 		
 	}
-
+	//Lee la opcion entre ciertos valores
 	@Override
 	public int leeOpcion(int inf, int sup) {
 		
 		return sc.readIntBucle("Introduce opcion: ", inf, sup);
 	}
+	//Menu del cliente 
 	@Override
 	public void printClientMenu() {
-		System.out.println("[0] - Atras");
-		System.out.println("[1] - Introducir Cliente");
+		System.out.println("______MENÚ CLIENTE______");
+		System.out.println(" Pulse [0] para -> volver hacia atrás.");
+		System.out.println(" Pulse [1] para -> Introducir un nuevo Cliente.");
+		System.out.println(" Pulse [2] para -> Modificar el Cliente.");
+		
 		
 	}
 
