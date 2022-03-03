@@ -20,6 +20,15 @@ public class DDBB extends interfaces.AbstractDataBase{
 	}
 	
 	private static DDBB instance = null;
+	
+	public static IDDBB newInstance() {
+		if(instance == null) {
+			instance = new DDBB();
+		}
+		
+		return instance;
+	}
+	
 	@Override
 	public Boolean addClient(IClient c) {
 		 boolean exists = false;
@@ -33,7 +42,7 @@ public class DDBB extends interfaces.AbstractDataBase{
 	@Override
 	public IClient searchClient(String dni) {
 		// TODO Auto-generated method stub
-		return null;
+		return clients.get(dni);
 	}
 
 	@Override
@@ -69,7 +78,12 @@ public class DDBB extends interfaces.AbstractDataBase{
 	@Override
 	public Boolean deleteClient(String dni) {
 		// TODO Auto-generated method stub
-		return null;
+		boolean delete = false;
+		if (clients.containsKey(dni)) {
+			delete = true;
+			clients.remove(dni);
+		}
+		return delete;
 	}
 
 	@Override
@@ -82,14 +96,6 @@ public class DDBB extends interfaces.AbstractDataBase{
 	public void loadDataBase() {
 		// TODO Auto-generated method stub
 		
-	}
-
-	public static IDDBB newInstance() {
-		if(instance == null) {
-			instance = new DDBB();
-		}
-		
-		return instance;
 	}
 
 }
