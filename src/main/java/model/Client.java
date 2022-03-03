@@ -10,12 +10,13 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Client extends interfaces.AbstractClient{
 
-	public Client() {
+	private Client() {
 		
 	}
 	public Client(String dni,String name,Integer age,String phoneNumber)throws IllegalArgumentException {
 		super();
 		try {
+			this.setName(name);
 			this.setDNI(dni);
 			this.setAge(age);
 			this.setPhoneNumber(phoneNumber);
@@ -34,7 +35,7 @@ public class Client extends interfaces.AbstractClient{
 
 	@Override
 	public void setName(String name) throws IllegalArgumentException {
-		// TODO Auto-generated method stub
+		this.name = name;
 		
 	}
 
@@ -92,7 +93,7 @@ public class Client extends interfaces.AbstractClient{
 	}
 
 	@Override
-	protected void setRegisterTime(LocalDateTime time) {
+	public void setRegisterTime(LocalDateTime time) {
 		this.registrationDate = time;
 		
 	}

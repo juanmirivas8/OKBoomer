@@ -10,7 +10,6 @@ import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import model.Adapters;
 
-@XmlTransient
 @XmlAccessorType(XmlAccessType.FIELD)
 public abstract class AbstractClient implements IClient{
 
@@ -22,7 +21,7 @@ public abstract class AbstractClient implements IClient{
     @XmlJavaTypeAdapter(type = LocalDateTime.class, value = Adapters.LocalDateTimeBind.class)
 	protected LocalDateTime registrationDate;
 	
-	protected abstract void setRegisterTime(LocalDateTime time);
+	public abstract void setRegisterTime(LocalDateTime time);
 	@Override
 	public int hashCode() {
 		return Objects.hash(DNI);
