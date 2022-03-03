@@ -42,7 +42,7 @@ public class AppController extends interfaces.AbstractController{
 		int opcion = 0;
 		
 		do {
-			view.printListMenu();
+			view.printClientMenu();
 			opcion = view.leeOpcion(0,1);
 			
 			switch (opcion) {

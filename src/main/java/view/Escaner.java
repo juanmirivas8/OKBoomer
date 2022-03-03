@@ -264,7 +264,6 @@ public class Escaner {
 		do {
 			invalido = true;
 			try {
-				System.out.println(mensaje);
 				retCad = this.readString(mensaje, regex);
 				invalido=false;
 			} catch (Exception e) {
