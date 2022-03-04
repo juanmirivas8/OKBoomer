@@ -64,68 +64,84 @@ public class AppController extends interfaces.AbstractController{
 
 	@Override
 	protected void deleteClient() {
-		// TODO Auto-generated method stub
-		
+		//????
+		String dni = "";
+		db.deleteClient(dni);
 	}
 
 	@Override
 	protected void modifyClient() {
-		// TODO Auto-generated method stub
-		
+		//???
+		String dni = "";
+		db.searchClient(dni);
+		view.modifyClient(null);
 	}
 
 	@Override
 	protected void searchClient() {
-		// TODO Auto-generated method stub
-		
+		//???
+		String dni = "";
+		db.searchClient(dni);
 	}
 
 	@Override
 	protected void listClients() {
-		// TODO Auto-generated method stub
+		int opcion = 0;
 		
+		do {
+			view.printListMenu();;
+			opcion = view.leeOpcion(0,5);
+			
+			switch (opcion) {
+				//case 0 ->
+			
+				case 1 ->listClientsByAge();
+				
+				case 2 ->listClientsByName();
+				
+				case 3 ->listClientsByKey();
+				
+				case 4 ->listClientsByPhoneNumber();
+				
+				case 5 ->listClientsByRegistrationDate();
+
+			}
+		}while(opcion!=0);
 	}
 
 	@Override
 	protected void listClientsByAge() {
-		// TODO Auto-generated method stub
-		
+		db.listOfClientsByAge();
 	}
 
 	@Override
 	protected void listClientsByName() {
-		// TODO Auto-generated method stub
-		
+		db.listOfClientsByName();
 	}
 
 	@Override
 	protected void listClientsByKey() {
-		// TODO Auto-generated method stub
-		
+		db.listOfClientsByKey();
 	}
 
 	@Override
 	protected void listClientsByPhoneNumber() {
-		// TODO Auto-generated method stub
-		
+		db.listOfClientsByPhoneNumber();
 	}
 
 	@Override
 	protected void listClientsByRegistrationDate() {
-		// TODO Auto-generated method stub
-		
+		db.listOfClientsByRegistrationDate();
 	}
 
 	@Override
 	protected void productMenu() {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	protected void reservationsMenu() {
-		// TODO Auto-generated method stub
-		
+í		
 	}
 
 	@Override
