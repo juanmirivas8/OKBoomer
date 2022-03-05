@@ -33,9 +33,4 @@ public abstract class AbstractController implements IAppController{
 	
 	protected abstract void exitProgram();
 	
-	protected abstract void cargarXML();
-	
-	protected abstract void guardarXML();
-	
-	
 }

@@ -20,83 +20,94 @@ public class GUI extends interfaces.AbstractView{
 		
 		return new Client(dni, name, age, phone);
 	}
-	//Modifica el cliente
+	
 	@Override
 	public void modifyClient(IClient c) {
+		String name = sc.readString("Introduce nombre: ");
+		Integer age = sc.readIntBucle("Introduce edad: ", 0, 120);
+		String phone = sc.readStringBucle("Introduce phone: ", "[0-9]{9}");
 		
-		
-	}
-	//Imprime el cliente
-	@Override
-	public void printClient(IClient c) {
-		System.out.println("El cliente ->  "+c);
-		
-	}
-
-	@Override
-	public void printList() {
-		
-		
-	}
-	//Imprime el menú
-	@Override
-	public void printMainMenu() {
-		System.out.println("______BIENVENIDO A OKBOOMER______");
-		System.out.println(" pulse [0] para -> Salir del programa.");
-		System.out.println(" pulse [1] para -> Ir hacia el  Menu Clientes.");
-		System.out.println(" pulse [2] para -> Mostrar la lista.");
-		
-		
-	}
-	//Muestra por el cliente por atributo en especifico
-	@Override
-	public void printListMenu() {
-		System.out.println("____¿Por cual atributo quieres mostras la lista?____");
-		System.out.println(" pulse [0] para -> Volver hacia atrás.");
-		System.out.println(" pulse [1] para -> Mostrarla por nombre.");
-		System.out.println(" pulse [2] para -> Mostrarla por DNI.");
-		System.out.println(" pulse [3] para -> Mostrarla por phone.");
-		
-	}
-	//Imprime salir del programa
-	@Override
-	public void printExitProgram() {
-		System.out.println("A salido correctamente del programa");
-		
-	}
-	//Imprime si la operación es correcta
-	@Override
-	public void operationResult(Boolean res) {
-		
-		if(res) {
-			System.out.println("la operación ha sido exitosa");
-		} else {
-			System.out.println("la operación no ha sido exitosa");
-		}
-			
-		
+		c.setName(name);
+		c.setAge(age);
+		c.setPhoneNumber(phone);
 	}
 	
 	@Override
-	public void printClientList(Collection<IClient> l) {
-		
+	public void printClient(IClient c) {
+		System.out.println("\n######################\n");
+		System.out.println(c);
+		System.out.println("\n######################\n");
+	}
+
+	@Override
+	public void printList(Collection<?> c) {
+		c.forEach(System.out::println);
 		
 	}
-	//Lee la opcion entre ciertos valores
+	@Override
+	public void printMainMenu() {
+		System.out.println("");
+		System.out.println("_________WELCOME TO SOGEVIC__________");
+		System.out.println("[0] -> Exit program");
+		System.out.println("[1] -> Client menu");
+		System.out.println("[2] -> Products menu");
+		System.out.println("[3] -> Reservations menu");
+		System.out.println("");
+	}
+	
+	@Override
+	public void printListMenu() {
+		System.out.println("");
+		System.out.println("[0] -> Go Back");
+		System.out.println("[1] -> Show clients by name");
+		System.out.println("[2] -> Show clients by DNI");
+		System.out.println("[3] -> Show clients by age");
+		System.out.println("[4] -> Show clients by phone number");
+		System.out.println("[5] -> Show clients by membership time");
+	}
+
+	@Override
+	public void printExitProgram() {
+		System.out.println("Program terminated successfully");
+	}
+	
+	@Override
+	public void operationResult(Boolean res) {
+		if(res) {
+			System.out.println("Successfull operation");
+		} else {
+			System.out.println("Failed operation");
+		}
+	}
+	
 	@Override
 	public int leeOpcion(int inf, int sup) {
 		
-		return sc.readIntBucle("Introduce opcion: ", inf, sup);
+		return sc.readIntBucle("Insert option: ", inf, sup);
 	}
-	//Menu del cliente 
+
 	@Override
 	public void printClientMenu() {
-		System.out.println("______MENÚ CLIENTE______");
-		System.out.println(" Pulse [0] para -> volver hacia atrás.");
-		System.out.println(" Pulse [1] para -> Introducir un nuevo Cliente.");
-		System.out.println(" Pulse [2] para -> Modificar el Cliente.");
+		System.out.println("");
+		System.out.println("______CLIENT MENU______");
+		System.out.println("[0] -> Return back");
+		System.out.println("[1] -> Insert new client");
+		System.out.println("[2] -> Modify existing client");
+		System.out.println("[3] -> Delete client");
+		System.out.println("[4] -> List clients");
+		System.out.println("[5] -> Find client");
+		System.out.println("");
+	}
+	@Override
+	public void printReturnBack() {
+		System.out.println("");
+		System.out.println("Returning back ...");
+		System.out.println("");
 		
-		
+	}
+	@Override
+	public String readDNI() {
+		return sc.readStringBucle("Insert DNI: ", "[0-9]{8}[A-Z]");
 	}
 
 }
