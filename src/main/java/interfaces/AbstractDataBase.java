@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlRootElement;
+
 
 import model.Client;
 @XmlAccessorType(XmlAccessType.FIELD)

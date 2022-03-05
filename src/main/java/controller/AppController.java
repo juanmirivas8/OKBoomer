@@ -1,12 +1,5 @@
 package controller;
 
-import java.io.File;
-
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
-import javax.xml.bind.Unmarshaller;
-
 import interfaces.IClient;
 import view.GUI;
 import model.DDBB;
@@ -20,18 +13,15 @@ public class AppController extends interfaces.AbstractController{
 	}
 	@Override
 	public void run() {
-		this.cargarXML();
 		int opcion = 0;
-		
 		do {
 			view.printMainMenu();
-			opcion = view.leeOpcion(0,1);
+			opcion = view.leeOpcion(0,3);
 			
 			switch (opcion) {
 				case 0 ->exitProgram();
 			
 				case 1 ->clientMenu();
-
 			}
 		}while(opcion!=0);
 		
@@ -43,12 +33,20 @@ public class AppController extends interfaces.AbstractController{
 		
 		do {
 			view.printClientMenu();
-			opcion = view.leeOpcion(0,1);
+			opcion = view.leeOpcion(0,5);
 			
 			switch (opcion) {
-				case 0 ->exitProgram();
+				case 0 ->view.printReturnBack();
 			
 				case 1 ->registerClient();
+				
+				case 2 ->modifyClient();
+				
+				case 3 ->deleteClient();
+				
+				case 4 ->listClients();
+				
+				case 5 ->searchClient();
 
 			}
 		}while(opcion!=0);
@@ -64,24 +62,34 @@ public class AppController extends interfaces.AbstractController{
 
 	@Override
 	protected void deleteClient() {
-		//????
-		String dni = "";
-		db.deleteClient(dni);
+		String dni = view.readDNI();
+		Boolean res = db.deleteClient(dni);
+		view.operationResult(res);
 	}
 
 	@Override
 	protected void modifyClient() {
-		//???
-		String dni = "";
-		db.searchClient(dni);
-		view.modifyClient(null);
+		String dni = view.readDNI();
+		IClient c = db.searchClient(dni);
+		if(c != null) {
+			view.modifyClient(c);
+			view.operationResult(true);
+		}else {
+			view.operationResult(false);
+		}
+	
 	}
 
 	@Override
 	protected void searchClient() {
-		//???
-		String dni = "";
-		db.searchClient(dni);
+		String dni = view.readDNI();
+		IClient c = db.searchClient(dni);
+		
+		if(c!=null) {
+			view.printClient(c);
+		}else {
+			view.operationResult(false);
+		}
 	}
 
 	@Override
@@ -89,17 +97,17 @@ public class AppController extends interfaces.AbstractController{
 		int opcion = 0;
 		
 		do {
-			view.printListMenu();;
+			view.printListMenu();
 			opcion = view.leeOpcion(0,5);
 			
 			switch (opcion) {
-				//case 0 ->
+				case 0 ->view.printReturnBack();
 			
-				case 1 ->listClientsByAge();
+				case 1 ->listClientsByName();
 				
-				case 2 ->listClientsByName();
+				case 2 ->listClientsByKey();
 				
-				case 3 ->listClientsByKey();
+				case 3 ->listClientsByAge();
 				
 				case 4 ->listClientsByPhoneNumber();
 				
@@ -111,27 +119,28 @@ public class AppController extends interfaces.AbstractController{
 
 	@Override
 	protected void listClientsByAge() {
-		db.listOfClientsByAge();
+		
+		view.printList(db.listOfClientsByAge());
 	}
 
 	@Override
 	protected void listClientsByName() {
-		db.listOfClientsByName();
+		view.printList(db.listOfClientsByName());
 	}
 
 	@Override
 	protected void listClientsByKey() {
-		db.listOfClientsByKey();
+		view.printList(db.listOfClientsByKey());
 	}
 
 	@Override
 	protected void listClientsByPhoneNumber() {
-		db.listOfClientsByPhoneNumber();
+		view.printList(db.listOfClientsByPhoneNumber());
 	}
 
 	@Override
 	protected void listClientsByRegistrationDate() {
-		db.listOfClientsByRegistrationDate();
+		view.printList(db.listOfClientsByRegistrationDate());
 	}
 
 	@Override
@@ -141,43 +150,13 @@ public class AppController extends interfaces.AbstractController{
 
 	@Override
 	protected void reservationsMenu() {
-í		
+	
 	}
 
 	@Override
 	protected void exitProgram() {
-		guardarXML();
-		
+		db.saveDataBase();
+		view.printExitProgram();
 	}
-	@Override
-	protected void cargarXML() {
-		JAXBContext contexto;
-		try {
-			contexto = JAXBContext.newInstance(DDBB.class);
-		    Unmarshaller um = contexto.createUnmarshaller();
-		     
-		    //We had written this file in marshalling example
-		    DDBB newBBDD = (DDBB) um.unmarshal( new File("prueba.xml") );
-		    db=newBBDD;
-		} catch (JAXBException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-	}
-	@Override
-	protected void guardarXML() {
-		try {
-			JAXBContext contexto = JAXBContext.newInstance(DDBB.class);
-			Marshaller m = contexto.createMarshaller();
-			m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-			
-			m.marshal(db, new File("prueba.xml"));
-		} catch (JAXBException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-	}
-
+	
 }

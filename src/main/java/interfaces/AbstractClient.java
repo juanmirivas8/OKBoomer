@@ -6,10 +6,10 @@ import java.util.Objects;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import model.Adapters;
 
+@SuppressWarnings("serial")
 @XmlAccessorType(XmlAccessType.FIELD)
 public abstract class AbstractClient implements IClient{
 
@@ -22,6 +22,7 @@ public abstract class AbstractClient implements IClient{
 	protected LocalDateTime registrationDate;
 	
 	public abstract void setRegisterTime(LocalDateTime time);
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(DNI);
@@ -37,6 +38,14 @@ public abstract class AbstractClient implements IClient{
 		AbstractClient other = (AbstractClient) obj;
 		return Objects.equals(DNI, other.DNI);
 	}
+
+	@Override
+	public String toString() {
+		return "[DNI =" + DNI + ",\nname = " + name + ",\nage = " + age + ",\nphoneNumber = " + phoneNumber
+				+ ",\nregistration Date = " + registrationDate + "]";
+	}
+
+	
 	
 	
 }

@@ -2,25 +2,27 @@ package interfaces;
 
 import java.util.Collection;
 
+import model.Client;
+
+
 public interface IDDBB {
 
 	Boolean addClient(IClient c);
 	
 	IClient searchClient(String dni);
 	
-	Collection<IClient> listOfClientsByName();
+	Collection<Client> listOfClientsByName();
 	
-	Collection<IClient> listOfClientsByKey();
+	Collection<Client> listOfClientsByKey();
 	
-	Collection<IClient> listOfClientsByPhoneNumber();
+	Collection<Client> listOfClientsByPhoneNumber();
 	
-	Collection<IClient> listOfClientsByAge();
+	Collection<Client> listOfClientsByAge();
 	
-	Collection<IClient> listOfClientsByRegistrationDate();
+	Collection<Client> listOfClientsByRegistrationDate();
 	
 	Boolean deleteClient(String dni);
 	
-	void saveDataBase();
+	public void saveDataBase();
 	
-	void loadDataBase();
 }

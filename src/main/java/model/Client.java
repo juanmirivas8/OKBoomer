@@ -10,6 +10,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Client extends interfaces.AbstractClient{
 
+	@SuppressWarnings("unused")
 	private Client() {
 		
 	}
@@ -35,6 +36,9 @@ public class Client extends interfaces.AbstractClient{
 
 	@Override
 	public void setName(String name) throws IllegalArgumentException {
+		if(name==null||name.isEmpty()) {
+			throw new IllegalArgumentException("Invalid name");
+		}
 		this.name = name;
 		
 	}
@@ -47,7 +51,7 @@ public class Client extends interfaces.AbstractClient{
 
 	@Override
 	public void setDNI(String dni) throws IllegalArgumentException {
-		if(!dni.matches("[0-9]{8}[A-Z]")) {
+		if(dni==null||!dni.matches("[0-9]{8}[A-Z]")) {
 			throw new IllegalArgumentException("DNI no cumple formato");
 		}else {
 			this.DNI = dni;
@@ -63,7 +67,7 @@ public class Client extends interfaces.AbstractClient{
 
 	@Override
 	public void setAge(Integer age) throws IllegalArgumentException {
-		if(age<=0) {
+		if(age==null||age<=0) {
 			throw new IllegalArgumentException("Edad incorrecta");
 		}else {
 			this.age=age;
@@ -78,7 +82,7 @@ public class Client extends interfaces.AbstractClient{
 
 	@Override
 	public void setPhoneNumber(String phoneNumber) throws IllegalArgumentException {
-		if(!phoneNumber.matches("[0-9]{9}")) {
+		if(phoneNumber==null||!phoneNumber.matches("[0-9]{9}")) {
 			throw new IllegalArgumentException("Numero no cumple formato");
 		}else {
 			this.phoneNumber = phoneNumber;
@@ -97,5 +101,7 @@ public class Client extends interfaces.AbstractClient{
 		this.registrationDate = time;
 		
 	}
+	
+	
 
 }

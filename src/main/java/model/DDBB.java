@@ -1,31 +1,33 @@
 package model;
 
-
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
-
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
-
 import interfaces.IClient;
 import interfaces.IDDBB;
-import sun.awt.www.content.audio.x_aiff;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 public class DDBB extends interfaces.AbstractDataBase{
 
 	private DDBB() {
-		clients = new HashMap<String,Client>();
+		
 	}
 	
 	private static DDBB instance = null;
 	
 	public static IDDBB newInstance() {
 		if(instance == null) {
+			DDBB aux = loadDataBase();
 			instance = new DDBB();
+			instance.clients=aux.clients;
 		}
 		
 		return instance;
@@ -43,48 +45,46 @@ public class DDBB extends interfaces.AbstractDataBase{
 
 	@Override
 	public IClient searchClient(String dni) {
-		// TODO Auto-generated method stub
 		return clients.get(dni);
 	}
 
 	@Override
 	public Collection<Client> listOfClientsByName() {
-		// TODO Auto-generated method stub
-		ArrayList<Client> c = new ArrayList<>(clients.values());
+		ArrayList<Client> c = new ArrayList<>(clients.values()); 
 		c.sort((c1,c2)->c1.getName().compareToIgnoreCase(c2.getName()));
+		return c;
 	}
 
 	@Override
-	public Collection<IClient> listOfClientsByKey() {
-		// TODO Auto-generated method stub
+	public Collection<Client> listOfClientsByKey() {
 		ArrayList<Client> c = new ArrayList<>(clients.values());
 		c.sort((c1,c2)->c1.getDNI().compareToIgnoreCase(c2.getDNI()));
+		return c;
 	}
 
 	@Override
-	public Collection<IClient> listOfClientsByPhoneNumber() {
-		// TODO Auto-generated method stub
+	public Collection<Client> listOfClientsByPhoneNumber() {
 		ArrayList<Client> c = new ArrayList<>(clients.values());
 		c.sort((c1,c2)->c1.getPhoneNumber().compareToIgnoreCase(c2.getPhoneNumber()));
+		return c;
 	}
 
 	@Override
-	public Collection<IClient> listOfClientsByAge() {
-		// TODO Auto-generated method stub
+	public Collection<Client> listOfClientsByAge() {
 		ArrayList<Client> c = new ArrayList<>(clients.values());
 		c.sort((c1,c2)->c1.getAge().compareTo(c2.getAge()));
+		return c;
 	}
 
 	@Override
-	public Collection<IClient> listOfClientsByRegistrationDate() {
-		// TODO Auto-generated method stub
+	public Collection<Client> listOfClientsByRegistrationDate() {
 		ArrayList<Client> c = new ArrayList<>(clients.values());
 		c.sort((c1,c2)->c1.getRegisterTime().compareTo(c2.getRegisterTime()));
+		return c;
 	}
 
 	@Override
 	public Boolean deleteClient(String dni) {
-		// TODO Auto-generated method stub
 		boolean delete = false;
 		if (clients.containsKey(dni)) {
 			delete = true;
@@ -92,17 +92,36 @@ public class DDBB extends interfaces.AbstractDataBase{
 		}
 		return delete;
 	}
-
-	@Override
-	public void saveDataBase() {
-		// TODO Auto-generated method stub
+	
+	private static DDBB loadDataBase() {
+		JAXBContext contexto;
+		DDBB newDDBB = null;
+		try {
+			contexto = JAXBContext.newInstance(DDBB.class);
+		    Unmarshaller um = contexto.createUnmarshaller();
+		     
+		    //We had written this file in marshalling example
+		    newDDBB = (DDBB) um.unmarshal( new File("prueba.xml") );
+	
+		} catch (JAXBException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
+		return newDDBB;
 	}
-
-	@Override
-	public void loadDataBase() {
-		// TODO Auto-generated method stub
-		
+	
+	public void saveDataBase() {
+		try {
+			JAXBContext contexto = JAXBContext.newInstance(DDBB.class);
+			Marshaller m = contexto.createMarshaller();
+			m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+			
+			m.marshal(instance, new File("prueba.xml"));
+		} catch (JAXBException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }
