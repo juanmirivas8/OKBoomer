@@ -2,14 +2,16 @@ package controller;
 
 import interfaces.IClient;
 import view.GUI;
-import model.DDBB;
+import model.Client;
+import model.ClientDAO;
+
 
 
 public class AppController extends interfaces.AbstractController{
 
 	public AppController() {
 		view = new GUI();
-		db = DDBB.newInstance();
+		clDAO = ClientDAO.newInstance();
 	}
 	@Override
 	public void run() {
@@ -56,34 +58,38 @@ public class AppController extends interfaces.AbstractController{
 	@Override
 	protected void registerClient() {
 		IClient c = view.readClient();
-		db.addClient(c);
-		
+		clDAO.add((Client)c, c.getDNI());
 	}
 
 	@Override
 	protected void deleteClient() {
 		String dni = view.readDNI();
-		Boolean res = db.deleteClient(dni);
-		view.operationResult(res);
+		IClient c = clDAO.delete(dni);
+		
+		if(c == null) {
+			view.operationResult(false);
+		}else {
+			view.operationResult(true);
+			view.printClient(c);
+		}
 	}
 
 	@Override
 	protected void modifyClient() {
 		String dni = view.readDNI();
-		IClient c = db.searchClient(dni);
+		IClient c = clDAO.search(dni);
 		if(c != null) {
 			view.modifyClient(c);
 			view.operationResult(true);
 		}else {
 			view.operationResult(false);
 		}
-	
 	}
 
 	@Override
 	protected void searchClient() {
 		String dni = view.readDNI();
-		IClient c = db.searchClient(dni);
+		IClient c = clDAO.search(dni);
 		
 		if(c!=null) {
 			view.printClient(c);
@@ -120,27 +126,27 @@ public class AppController extends interfaces.AbstractController{
 	@Override
 	protected void listClientsByAge() {
 		
-		view.printList(db.listOfClientsByAge());
+		view.printList(clDAO.listOfClientsByAge());
 	}
 
 	@Override
 	protected void listClientsByName() {
-		view.printList(db.listOfClientsByName());
+		view.printList(clDAO.listOfClientsByName());
 	}
 
 	@Override
 	protected void listClientsByKey() {
-		view.printList(db.listOfClientsByKey());
+		view.printList(clDAO.listOfClientsByKey());
 	}
 
 	@Override
 	protected void listClientsByPhoneNumber() {
-		view.printList(db.listOfClientsByPhoneNumber());
+		view.printList(clDAO.listOfClientsByPhoneNumber());
 	}
 
 	@Override
 	protected void listClientsByRegistrationDate() {
-		view.printList(db.listOfClientsByRegistrationDate());
+		view.printList(clDAO.listOfClientsByRegistrationDate());
 	}
 
 	@Override
@@ -155,7 +161,7 @@ public class AppController extends interfaces.AbstractController{
 
 	@Override
 	protected void exitProgram() {
-		db.saveDataBase();
+		clDAO.save();
 		view.printExitProgram();
 	}
 	

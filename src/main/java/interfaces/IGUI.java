@@ -2,8 +2,6 @@ package interfaces;
 
 import java.util.Collection;
 
-import model.Client;
-
 public interface IGUI {
 
 	IClient readClient();

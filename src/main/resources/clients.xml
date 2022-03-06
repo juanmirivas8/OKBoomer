@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<clientDAO>
+    <ddbb>
+        <entry>
+            <key xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">12345678A</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="client">
+                <age>23</age>
+                <name>Pedro</name>
+                <DNI>12345678A</DNI>
+                <phoneNumber>111111111</phoneNumber>
+                <registrationDate>2022-03-05 21:33:56:62</registrationDate>
+            </value>
+        </entry>
+    </ddbb>
+</clientDAO>

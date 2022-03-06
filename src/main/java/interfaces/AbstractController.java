@@ -3,7 +3,7 @@ package interfaces;
 public abstract class AbstractController implements IAppController{
 
 	protected IGUI view;
-	protected IDDBB db;
+	protected IClientDAO clDAO;
 	
 	protected abstract void clientMenu();
 	
