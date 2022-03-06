@@ -1,4 +1,4 @@
-package interfaces;
+package interfaces.products;
 
 import java.io.Serializable;
 import model.MCRS;

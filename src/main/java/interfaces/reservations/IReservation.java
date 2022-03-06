@@ -1,7 +1,6 @@
-package interfaces;
+package interfaces.reservations;
 
 import java.time.LocalDateTime;
-import java.util.Calendar;
 
 public interface IReservation {
 

@@ -1,7 +1,8 @@
-package interfaces;
+package interfaces.clients;
 
 import java.util.Collection;
 
+import interfaces.CRUD;
 import model.Client;
 
 public interface IClientDAO extends CRUD<String,Client>{

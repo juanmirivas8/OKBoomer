@@ -1,4 +1,4 @@
-package interfaces;
+package interfaces.clients;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -19,7 +19,7 @@ public interface IClient extends Serializable{
 	void setPhoneNumber(String phoneNumber)throws IllegalArgumentException;
 	
 	LocalDateTime getRegisterTime();
-	
+	void setRegisterTime(LocalDateTime t);
 	@Override
 	String toString();
 	

@@ -1,15 +1,26 @@
 package model;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
-public class Client extends interfaces.AbstractClient{
+public class Client implements interfaces.clients.IClient{
 
+	protected Integer age;
+	protected String name;
+	protected String DNI;
+	protected String phoneNumber;
+	@XmlElement
+    @XmlJavaTypeAdapter(type = LocalDateTime.class, value = Adapters.LocalDateTimeBind.class)
+	protected LocalDateTime registrationDate;
+	
 	@SuppressWarnings("unused")
 	private Client() {
 		
@@ -29,12 +40,12 @@ public class Client extends interfaces.AbstractClient{
 	}
 	private static final long serialVersionUID = 1L;
 
-	@Override
+	
 	public String getName() {
 		return this.name;
 	}
 
-	@Override
+
 	public void setName(String name) throws IllegalArgumentException {
 		if(name==null||name.isEmpty()) {
 			throw new IllegalArgumentException("Invalid name");
@@ -43,13 +54,13 @@ public class Client extends interfaces.AbstractClient{
 		
 	}
 
-	@Override
+	
 	public String getDNI() {
 		
 		return this.DNI;
 	}
 
-	@Override
+	
 	public void setDNI(String dni) throws IllegalArgumentException {
 		if(dni==null||!dni.matches("[0-9]{8}[A-Z]")) {
 			throw new IllegalArgumentException("DNI no cumple formato");
@@ -59,13 +70,13 @@ public class Client extends interfaces.AbstractClient{
 		
 	}
 
-	@Override
+	
 	public Integer getAge() {
 		
 		return this.age;
 	}
 
-	@Override
+	
 	public void setAge(Integer age) throws IllegalArgumentException {
 		if(age==null||age<=0) {
 			throw new IllegalArgumentException("Edad incorrecta");
@@ -75,12 +86,12 @@ public class Client extends interfaces.AbstractClient{
 		
 	}
 
-	@Override
+	
 	public String getPhoneNumber() {
 		return this.phoneNumber;
 	}
 
-	@Override
+	
 	public void setPhoneNumber(String phoneNumber) throws IllegalArgumentException {
 		if(phoneNumber==null||!phoneNumber.matches("[0-9]{9}")) {
 			throw new IllegalArgumentException("Numero no cumple formato");
@@ -90,16 +101,38 @@ public class Client extends interfaces.AbstractClient{
 		
 	}
 
-	@Override
+	
 	public LocalDateTime getRegisterTime() {
 		
 		return this.registrationDate;
 	}
 
-	@Override
+	
 	public void setRegisterTime(LocalDateTime time) {
 		this.registrationDate = time;
 		
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(DNI);
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Client other = (Client) obj;
+		return Objects.equals(DNI, other.DNI);
+	}
+
+	@Override
+	public String toString() {
+		return "[DNI =" + DNI + ",\nname = " + name + ",\nage = " + age + ",\nphoneNumber = " + phoneNumber
+				+ ",\nregistration Date = " + registrationDate + "]";
 	}
 	
 	

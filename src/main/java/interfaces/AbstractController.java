@@ -1,36 +1,35 @@
 package interfaces;
 
-public abstract class AbstractController implements IAppController{
+import interfaces.clients.IClientController;
+import interfaces.clients.IClientDAO;
+import interfaces.clients.IClientUI;
+import interfaces.products.IItemDAO;
+import interfaces.products.IProductDAO;
+import interfaces.products.IProductsController;
+import interfaces.products.IProductsUI;
+import interfaces.reservations.IReservationController;
+import interfaces.reservations.IReservationDAO;
+import interfaces.reservations.IReservationUI;
+import model.ClientDAO;
+import controller.ClientController;
 
-	protected IGUI view;
-	protected IClientDAO clDAO;
+public class AbstractController {
+	protected IClientDAO clients;
+	protected IProductDAO products;
+	protected IItemDAO items;
+	protected IReservationDAO reservations;
 	
-	protected abstract void clientMenu();
+	protected IClientUI clientView;
+	protected IProductsUI productView;
+	protected IReservationUI reservationView;
 	
-	protected abstract void registerClient();
+	protected IClientController clientController;
+	protected IProductsController productController;
+	protected IReservationController reservationController;
 	
-	protected abstract void deleteClient();
-	
-	protected abstract void modifyClient();
-	
-	protected abstract void searchClient();
-	
-	protected abstract void listClients();
-	
-	protected abstract void listClientsByAge();
-	
-	protected abstract void listClientsByName();
-	
-	protected abstract void listClientsByKey();
-	
-	protected abstract void listClientsByPhoneNumber();
-	
-	protected abstract void listClientsByRegistrationDate();
-	
-	protected abstract void productMenu();
-	
-	protected abstract void reservationsMenu();
-	
-	protected abstract void exitProgram();
+	public AbstractController() {
+		clients = ClientDAO.newInstance();
+		clientController = ClientController.newInstance();
+	}
 	
 }

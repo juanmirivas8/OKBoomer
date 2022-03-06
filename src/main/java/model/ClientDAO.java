@@ -18,7 +18,7 @@ import interfaces.AbstractDAO;
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlSeeAlso(Client.class)
-public class ClientDAO extends interfaces.AbstractDAO<String,Client> implements interfaces.IClientDAO{
+public class ClientDAO extends interfaces.AbstractDAO<String,Client> implements interfaces.clients.IClientDAO{
 
 	private static ClientDAO instance= null;
 	private static final long serialVersionUID = 1L;
