@@ -131,8 +131,8 @@ public class Client implements interfaces.clients.IClient{
 
 	@Override
 	public String toString() {
-		return "[DNI =" + DNI + ",\nname = " + name + ",\nage = " + age + ",\nphoneNumber = " + phoneNumber
-				+ ",\nregistration Date = " + registrationDate + "]";
+		return "DNI =" + DNI + ",\nname = " + name + ",\nage = " + age + ",\nphoneNumber = " + phoneNumber
+				+ ",\nregistration Date = " + registrationDate;
 	}
 	
 	

@@ -7,9 +7,20 @@ import model.Client;
 
 public class ClientsUI extends interfaces.AbstractUI implements interfaces.clients.IClientUI{
 
-	public ClientsUI(){
+	private ClientsUI(){
 		super();
 	}
+	
+	private static ClientsUI instance = null;
+	
+	public static ClientsUI newInstance() {
+		if(instance == null) {
+			instance = new ClientsUI();
+		}
+		
+		return instance;
+	}
+	
 	
 	@Override
 	public IClient readClient() {
@@ -34,14 +45,14 @@ public class ClientsUI extends interfaces.AbstractUI implements interfaces.clien
 	
 	@Override
 	public void printClient(IClient c) {
-		System.out.println("\n######################\n");
+		System.out.println("\n######################");
 		System.out.println(c);
-		System.out.println("\n######################\n");
+		System.out.println("\n######################");
 	}
 
 	@Override
-	public void printList(Collection<?> c) {
-		c.forEach(System.out::println);
+	public void printList(Collection<Client> c) {
+		c.forEach((x)->{printClient(x);});
 		
 	}
 

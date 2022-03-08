@@ -2,6 +2,26 @@
 <clientDAO>
     <ddbb>
         <entry>
+            <key xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">00000000A</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="client">
+                <age>20</age>
+                <name>Francisco Jesus Murillo de todos los Canos</name>
+                <DNI>00000000A</DNI>
+                <phoneNumber>633818622</phoneNumber>
+                <registrationDate>2022-03-07 22:38:02:73</registrationDate>
+            </value>
+        </entry>
+        <entry>
+            <key xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">56478902Z</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="client">
+                <age>50</age>
+                <name>Manolo Cosano</name>
+                <DNI>56478902Z</DNI>
+                <phoneNumber>765432098</phoneNumber>
+                <registrationDate>2022-03-07 22:38:36:69</registrationDate>
+            </value>
+        </entry>
+        <entry>
             <key xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">12345678A</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="client">
                 <age>23</age>

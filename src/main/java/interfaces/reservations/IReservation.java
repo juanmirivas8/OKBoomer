@@ -23,10 +23,11 @@ public interface IReservation {
 	void setStatus(Boolean status)throws IllegalArgumentException;
 	
 	Integer getID();
+	void setID();
 	
 	@Override
-	public abstract int hashCode();
+	public int hashCode();
 	
 	@Override
-	public abstract boolean equals(Object e);
+	public boolean equals(Object e);
 }

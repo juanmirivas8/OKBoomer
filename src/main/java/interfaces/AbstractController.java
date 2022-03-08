@@ -12,24 +12,41 @@ import interfaces.reservations.IReservationDAO;
 import interfaces.reservations.IReservationUI;
 import model.ClientDAO;
 import controller.ClientController;
+import view.ClientsUI;
+import view.UI;
+import controller.AppController;
 
-public class AbstractController {
-	protected IClientDAO clients;
-	protected IProductDAO products;
-	protected IItemDAO items;
-	protected IReservationDAO reservations;
+public abstract class AbstractController {
+	protected static IClientDAO clients;
+	protected static IProductDAO products;
+	protected static IItemDAO items;
+	protected static IReservationDAO reservations;
 	
-	protected IClientUI clientView;
-	protected IProductsUI productView;
-	protected IReservationUI reservationView;
+	protected static IClientUI clientView;
+	protected static IProductsUI productView;
+	protected static IReservationUI reservationView;
+	protected static IUI view;
 	
-	protected IClientController clientController;
-	protected IProductsController productController;
-	protected IReservationController reservationController;
+	protected static IClientController clientController;
+	protected static IProductsController productController;
+	protected static IReservationController reservationController;
+	protected static IAppController appController;
 	
-	public AbstractController() {
-		clients = ClientDAO.newInstance();
-		clientController = ClientController.newInstance();
+	protected AbstractController() {
+		if(!instanciated) {
+			instanciated = true;
+			view = UI.newInstance();
+			appController = AppController.newInstance();
+			clients = ClientDAO.newInstance();
+			clientController = ClientController.newInstance();
+			clientView = ClientsUI.newInstance();			
+		}	
+	}
+	
+	private static Boolean instanciated = false;
+	
+	public void save() {
+		clients.save();
 	}
 	
 }

@@ -1,10 +1,23 @@
 package view;
 
+import interfaces.IUI;
+
 public class UI extends interfaces.AbstractUI implements interfaces.IUI{
 
-	public UI() {
+	private UI() {
 		super();
 	}
+	
+	private static UI instance = null;
+	
+	public static IUI newInstance() {
+		if (instance == null) {
+			instance = new UI();
+		}
+		
+		return instance;
+	}
+	
 	@Override
 	public void printMainMenu() {
 		System.out.println("");
@@ -20,5 +33,6 @@ public class UI extends interfaces.AbstractUI implements interfaces.IUI{
 	public void printExitProgram() {
 		System.out.println("Program terminated successfully");
 	}
+	
 
 }

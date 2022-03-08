@@ -2,6 +2,8 @@ package interfaces.clients;
 
 import java.util.Collection;
 
+import model.Client;
+
 public interface IClientUI {
 
 	IClient readClient();
@@ -16,7 +18,7 @@ public interface IClientUI {
 	
 	void operationResult(Boolean res);
 
-	void printList(Collection<?> c);
+	void printList(Collection<Client> c);
 
 	void printReturnBack();
 	

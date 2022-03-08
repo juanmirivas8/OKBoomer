@@ -9,6 +9,7 @@ public interface IProduct extends Serializable{
 	void setTitle(String title)throws IllegalArgumentException;
 	
 	Integer getID();
+	void setID(Integer id);
 	
 	Integer getLength();
 	void setLength(Integer length)throws IllegalArgumentException;

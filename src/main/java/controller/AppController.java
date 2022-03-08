@@ -1,15 +1,17 @@
 package controller;
 
-import interfaces.IUI;
-import interfaces.clients.IClientController;
+public class AppController extends interfaces.AbstractController implements interfaces.IAppController{
 
-
-public class AppController implements interfaces.IAppController{
-
-	private IClientController c;
-	private IUI view;
-	public AppController() {
-		c = new ClientController();
+	private AppController() {
+		super();
+	}
+	
+	private static AppController instance = null;
+	public static AppController newInstance() {
+		if(instance == null) {
+			instance = new AppController();
+		}
+		return instance;
 	}
 	@Override
 	public void run() {
@@ -21,14 +23,15 @@ public class AppController implements interfaces.IAppController{
 			switch (opcion) {
 				case 0 ->exitProgram();
 			
-				case 1 ->c.clientMenu();
+				case 1 ->clientController.clientMenu();
 			}
 		}while(opcion!=0);
 	}
 	@Override
 	public void exitProgram() {
-		c.save();
+		save();
 		view.printExitProgram();
 	}
+	
 
 }

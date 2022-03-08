@@ -115,7 +115,6 @@ public class ClientController extends interfaces.AbstractController implements i
 
 	@Override
 	public void listClientsByAge() {
-		
 		clientView.printList(clients.listOfClientsByAge());
 	}
 
