@@ -1,4 +1,4 @@
-package interfaces;
+package interfaces.products;
 
 import java.io.Serializable;
 import model.MCRS;
@@ -9,6 +9,7 @@ public interface IProduct extends Serializable{
 	void setTitle(String title)throws IllegalArgumentException;
 	
 	Integer getID();
+	void setID(Integer id);
 	
 	Integer getLength();
 	void setLength(Integer length)throws IllegalArgumentException;

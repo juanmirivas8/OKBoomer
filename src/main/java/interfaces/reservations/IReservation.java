@@ -1,7 +1,6 @@
-package interfaces;
+package interfaces.reservations;
 
 import java.time.LocalDateTime;
-import java.util.Calendar;
 
 public interface IReservation {
 
@@ -24,10 +23,11 @@ public interface IReservation {
 	void setStatus(Boolean status)throws IllegalArgumentException;
 	
 	Integer getID();
+	void setID();
 	
 	@Override
-	public abstract int hashCode();
+	public int hashCode();
 	
 	@Override
-	public abstract boolean equals(Object e);
+	public boolean equals(Object e);
 }

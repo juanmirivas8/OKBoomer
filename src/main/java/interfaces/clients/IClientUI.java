@@ -1,10 +1,10 @@
-package interfaces;
+package interfaces.clients;
 
 import java.util.Collection;
 
 import model.Client;
 
-public interface IGUI {
+public interface IClientUI {
 
 	IClient readClient();
 	
@@ -12,21 +12,17 @@ public interface IGUI {
 	
 	void printClient(IClient c);
 	
-	void printMainMenu();
-	
 	void printClientMenu();
 	
 	void printListMenu();
 	
-	void printExitProgram();
-	
 	void operationResult(Boolean res);
-	
-	int leeOpcion(int inf, int sup);
 
-	void printList(Collection<?> c);
+	void printList(Collection<Client> c);
 
 	void printReturnBack();
 	
 	String readDNI();
+	
+	Integer readOption(Integer inf, Integer sup);
 }

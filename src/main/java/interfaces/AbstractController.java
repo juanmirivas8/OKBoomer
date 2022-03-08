@@ -1,36 +1,52 @@
 package interfaces;
 
-public abstract class AbstractController implements IAppController{
+import interfaces.clients.IClientController;
+import interfaces.clients.IClientDAO;
+import interfaces.clients.IClientUI;
+import interfaces.products.IItemDAO;
+import interfaces.products.IProductDAO;
+import interfaces.products.IProductsController;
+import interfaces.products.IProductsUI;
+import interfaces.reservations.IReservationController;
+import interfaces.reservations.IReservationDAO;
+import interfaces.reservations.IReservationUI;
+import model.ClientDAO;
+import controller.ClientController;
+import view.ClientsUI;
+import view.UI;
+import controller.AppController;
 
-	protected IGUI view;
-	protected IDDBB db;
+public abstract class AbstractController {
+	protected static IClientDAO clients;
+	protected static IProductDAO products;
+	protected static IItemDAO items;
+	protected static IReservationDAO reservations;
 	
-	protected abstract void clientMenu();
+	protected static IClientUI clientView;
+	protected static IProductsUI productView;
+	protected static IReservationUI reservationView;
+	protected static IUI view;
 	
-	protected abstract void registerClient();
+	protected static IClientController clientController;
+	protected static IProductsController productController;
+	protected static IReservationController reservationController;
+	protected static IAppController appController;
 	
-	protected abstract void deleteClient();
+	protected AbstractController() {
+		if(!instanciated) {
+			instanciated = true;
+			view = UI.newInstance();
+			appController = AppController.newInstance();
+			clients = ClientDAO.newInstance();
+			clientController = ClientController.newInstance();
+			clientView = ClientsUI.newInstance();			
+		}	
+	}
 	
-	protected abstract void modifyClient();
+	private static Boolean instanciated = false;
 	
-	protected abstract void searchClient();
-	
-	protected abstract void listClients();
-	
-	protected abstract void listClientsByAge();
-	
-	protected abstract void listClientsByName();
-	
-	protected abstract void listClientsByKey();
-	
-	protected abstract void listClientsByPhoneNumber();
-	
-	protected abstract void listClientsByRegistrationDate();
-	
-	protected abstract void productMenu();
-	
-	protected abstract void reservationsMenu();
-	
-	protected abstract void exitProgram();
+	public void save() {
+		clients.save();
+	}
 	
 }
