@@ -52,7 +52,7 @@ public class ClientsUI extends interfaces.AbstractUI implements interfaces.clien
 
 	@Override
 	public void printList(Collection<Client> c) {
-		c.forEach((x)->{printClient(x);});
+		c.forEach(x->printClient(x));
 		
 	}
 
@@ -67,16 +67,6 @@ public class ClientsUI extends interfaces.AbstractUI implements interfaces.clien
 		System.out.println("[5] -> Show clients by membership time");
 	}
 
-	
-	@Override
-	public void operationResult(Boolean res) {
-		if(res) {
-			System.out.println("Successfull operation");
-		} else {
-			System.out.println("Failed operation");
-		}
-	}
-
 	@Override
 	public void printClientMenu() {
 		System.out.println("");
@@ -88,17 +78,6 @@ public class ClientsUI extends interfaces.AbstractUI implements interfaces.clien
 		System.out.println("[4] -> List clients");
 		System.out.println("[5] -> Find client");
 		System.out.println("");
-	}
-	@Override
-	public void printReturnBack() {
-		System.out.println("");
-		System.out.println("Returning back ...");
-		System.out.println("");
-		
-	}
-	@Override
-	public String readDNI() {
-		return sc.readStringBucle("Insert DNI: ", "[0-9]{8}[A-Z]");
 	}
 
 }

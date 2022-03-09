@@ -30,4 +30,7 @@ public interface IReservation {
 	
 	@Override
 	public boolean equals(Object e);
+	
+	@Override
+	String toString();
 }
