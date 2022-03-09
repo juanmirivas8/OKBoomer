@@ -7,13 +7,13 @@ import model.Client;
 
 public interface IClientDAO extends CRUD<String,Client>{
 
-	public Collection<Client> listOfClientsByName();
+	Collection<Client> listOfClientsByName();
 	
-	public Collection<Client> listOfClientsByKey();
+	Collection<Client> listOfClientsByKey();
 	
-	public Collection<Client> listOfClientsByPhoneNumber();
+	Collection<Client> listOfClientsByPhoneNumber();
 	
-	public Collection<Client> listOfClientsByAge();
+	Collection<Client> listOfClientsByAge();
 	
-	public Collection<Client> listOfClientsByRegistrationDate();
+	Collection<Client> listOfClientsByRegistrationDate();
 }
