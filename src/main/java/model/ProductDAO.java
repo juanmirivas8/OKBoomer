@@ -1,6 +1,8 @@
 package model;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Collection;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -11,6 +13,8 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
 
+import interfaces.products.IProduct;
+
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlSeeAlso(Product.class)
@@ -18,9 +22,9 @@ public class ProductDAO extends interfaces.AbstractDAO<Integer,Product> implemen
 	
 	private static ProductDAO instance= null;
 	private static final long serialVersionUID = 1L;
-	
+	private IDGenerator keygen;
 	private ProductDAO() {
-		
+		keygen = new IDGenerator();
 	}
 	
 	public static ProductDAO newInstance() {
@@ -62,5 +66,53 @@ public class ProductDAO extends interfaces.AbstractDAO<Integer,Product> implemen
 		}
 		
 		return newDDBB;
+	}
+
+	@Override
+	public Collection<Product> listOfItemsByTitle() {
+		ArrayList<Product> p = new ArrayList<>(ddbb.values()); 
+		p.sort((p1,p2)->p1.getTitle().compareTo(p2.getTitle()));
+		return p;
+	}
+
+	@Override
+	public Collection<Product> listOfItemsByKey() {
+		ArrayList<Product> p = new ArrayList<>(ddbb.values()); 
+		p.sort((p1,p2)->p1.getID().compareTo(p2.getID()));
+		return p;
+	}
+
+	@Override
+	public Collection<Product> listOfItemsByLength() {
+		ArrayList<Product> p = new ArrayList<>(ddbb.values()); 
+		p.sort((p1,p2)->p1.getLength().compareTo(p2.getLength()));
+		return p;
+	}
+
+	@Override
+	public Collection<Product> listOfItemsByPrice() {
+		ArrayList<Product> p = new ArrayList<>(ddbb.values()); 
+		p.sort((p1,p2)->p1.getPrice().compareTo(p2.getPrice()));
+		return p;
+	}
+
+	@Override
+	public Collection<Product> listOfItemsByRating() {
+		ArrayList<Product> p = new ArrayList<>(ddbb.values()); 
+		p.sort((p1,p2)->p1.getRating().compareTo(p2.getRating()));
+		return p;
+	}
+
+	@Override
+	public Boolean add(IProduct p) {
+		Integer key = keygen.generateKey();
+		p.setID(key);
+		return super.add((Product)p, key);
+	}
+	
+	@Override
+	public Product delete(Integer k) {
+		keygen.eliminateKey(k);
+		return super.delete(k);
 	}
 }
