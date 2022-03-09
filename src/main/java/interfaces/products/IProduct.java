@@ -20,4 +20,13 @@ public interface IProduct extends Serializable{
 	MCRS getRating();
 	void setRating(MCRS rating)throws IllegalArgumentException;
 	
+	@Override
+	public int hashCode();
+	
+	@Override
+	public boolean equals(Object e);
+	
+	@Override
+	String toString();
+	
 }

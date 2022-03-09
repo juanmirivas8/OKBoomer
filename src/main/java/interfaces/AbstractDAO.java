@@ -3,7 +3,6 @@ package interfaces;
 import java.util.HashMap;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlSeeAlso;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 public abstract class AbstractDAO<K,V> implements CRUD<K,V>{

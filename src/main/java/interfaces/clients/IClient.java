@@ -20,8 +20,14 @@ public interface IClient extends Serializable{
 	
 	LocalDateTime getRegisterTime();
 	void setRegisterTime(LocalDateTime t);
+	
+	@Override
+	public int hashCode();
+	
+	@Override
+	public boolean equals(Object e);
+	
 	@Override
 	String toString();
-	
-	
+
 }
