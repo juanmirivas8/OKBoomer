@@ -11,4 +11,8 @@ public interface IProductDAO {
 	Collection<Product> listOfItemsByPrice();
 	Collection<Product> listOfItemsByRating();
 	
+	public Boolean add(IProduct p);
+	
+	public IProduct delete(Integer key);
+	
 }
