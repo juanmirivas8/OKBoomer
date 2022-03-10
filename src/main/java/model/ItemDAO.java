@@ -1,6 +1,8 @@
 package model;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Collection;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -11,6 +13,8 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
 
+import interfaces.products.IItem;
+
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlSeeAlso(Item.class)
@@ -18,6 +22,7 @@ public class ItemDAO extends interfaces.AbstractDAO<Integer, Item> implements in
 
 	private static final long serialVersionUID = 1L;
 	private static ItemDAO instance = null;
+	private IDGenerator keygen;
 	
 	private ItemDAO() {
 		// TODO Auto-generated constructor stub
@@ -64,6 +69,45 @@ public class ItemDAO extends interfaces.AbstractDAO<Integer, Item> implements in
 		}
 		
 		return newDDBB;
+	}
+
+	@Override
+	public Collection<Item> listOfItemsByKey() {
+		// TODO Auto-generated method stub
+		ArrayList<Item> i = new ArrayList<>(ddbb.values());
+		i.sort( (i1,i2)-> i1.getID().compareTo(i2.getID()) );
+		return i;
+	}
+
+	@Override
+	public Collection<Item> listOfItemsByProductKey() {
+		// TODO Auto-generated method stub
+		ArrayList<Item> i = new ArrayList<>(ddbb.values());
+		i.sort( (i1,i2)-> i1.getProductID().compareTo(i2.getProductID()));
+		return i;
+	}
+
+	@Override
+	public Collection<Item> listOfItemsByCondition() {
+		// TODO Auto-generated method stub
+		ArrayList<Item> i = new ArrayList<>(ddbb.values());
+		i.sort((i1,i2)-> i1.getPreservationCondition().compareTo(i2.getPreservationCondition()));
+		return i;
+	}
+
+	@Override
+	public Boolean add(IItem i) {
+		// TODO Auto-generated method stub
+		Integer key = keygen.generateKey();
+		i.setID(key);
+		return super.add((Item)i, key);
+	}
+	
+	@Override
+	public Item delete(Integer k) {
+		// TODO Auto-generated method stub
+		keygen.eliminateKey(k);
+		return super.delete(k);
 	}
 
 }
