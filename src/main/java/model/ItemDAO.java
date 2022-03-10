@@ -32,7 +32,7 @@ public class ItemDAO extends interfaces.AbstractDAO<Integer, Item> implements in
 	public static ItemDAO newInstance() {
 		if (instance == null) {
 			instance = new ItemDAO();
-			ItemDAO aux = (ItemDAO)load();
+			ItemDAO aux = load();
 			instance.ddbb = aux.ddbb;
 		}
 		return instance;
@@ -54,7 +54,7 @@ public class ItemDAO extends interfaces.AbstractDAO<Integer, Item> implements in
 		}
 	}
 
-	public static ItemDAO load() {
+	private static ItemDAO load() {
 		// TODO Auto-generated method stub
 		JAXBContext c;
 		ItemDAO newDDBB = null;

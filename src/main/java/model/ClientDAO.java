@@ -28,7 +28,7 @@ public class ClientDAO extends interfaces.AbstractDAO<String,Client> implements 
 	public static ClientDAO newInstance() {
 		if(instance == null) {
 			instance = new ClientDAO();
-			ClientDAO aux = (ClientDAO)load();
+			ClientDAO aux = load();
 			instance.ddbb = aux.ddbb;
 		}
 		
@@ -50,7 +50,7 @@ public class ClientDAO extends interfaces.AbstractDAO<String,Client> implements 
 		
 	}
 	
-	public static ClientDAO load() {
+	private static ClientDAO load() {
 		JAXBContext contexto;
 		ClientDAO newDDBB = null;
 		try {

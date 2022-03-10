@@ -30,7 +30,7 @@ public class ProductDAO extends interfaces.AbstractDAO<Integer,Product> implemen
 	public static ProductDAO newInstance() {
 		if(instance == null) {
 			instance = new ProductDAO();
-			ProductDAO aux = (ProductDAO)load();
+			ProductDAO aux = load();
 			instance.ddbb = aux.ddbb;
 		}
 		return instance;
@@ -50,7 +50,7 @@ public class ProductDAO extends interfaces.AbstractDAO<Integer,Product> implemen
 		}
 	}
 	
-	public static ProductDAO load() {
+	private static ProductDAO load() {
 		JAXBContext contexto;
 		ProductDAO newDDBB = null;
 		try {

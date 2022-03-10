@@ -15,7 +15,10 @@ public class Item implements interfaces.products.IItem {
     private Integer productID;
     private PreservationCondition PreservationCondition;
 
-
+    public Item(Integer productID, PreservationCondition status) {
+    	this.setProductID(productID);
+    	this.setPreservationCondition(status);
+    }
     public Integer getID() {
         return this.ID;
     }
