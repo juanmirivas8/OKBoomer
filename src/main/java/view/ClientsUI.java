@@ -24,19 +24,19 @@ public class ClientsUI extends interfaces.AbstractUI implements interfaces.clien
 	
 	@Override
 	public IClient readClient() {
-		String dni = sc.readStringBucle("Introduce dni: ", "[0-9]{8}[A-Z]");
-		String name = sc.readString("Introduce nombre: ");
-		Integer age = sc.readIntBucle("Introduce edad: ", 0, 120);
-		String phone = sc.readStringBucle("Introduce phone: ", "[0-9]{9}");
+		String dni = sc.readStringBucle("Insert DNI: ", "[0-9]{8}[A-Z]");
+		String name = sc.readString("Insert name: ");
+		Integer age = sc.readIntBucle("Insert age: ", 0, 120);
+		String phone = sc.readStringBucle("Insert phone: ", "[0-9]{9}");
 		
 		return new Client(dni, name, age, phone);
 	}
 	
 	@Override
 	public void modifyClient(IClient c) {
-		String name = sc.readString("Introduce nombre: ");
-		Integer age = sc.readIntBucle("Introduce edad: ", 0, 120);
-		String phone = sc.readStringBucle("Introduce phone: ", "[0-9]{9}");
+		String name = sc.readString("Insert name: ");
+		Integer age = sc.readIntBucle("Insert age: ", 0, 120);
+		String phone = sc.readStringBucle("Insert phone: ", "[0-9]{9}");
 		
 		c.setName(name);
 		c.setAge(age);
