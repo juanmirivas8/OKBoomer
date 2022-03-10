@@ -26,6 +26,7 @@ public class ItemDAO extends interfaces.AbstractDAO<Integer, Item> implements in
 	
 	private ItemDAO() {
 		// TODO Auto-generated constructor stub
+		keygen = new IDGenerator();
 	}
 	
 	public static ItemDAO newInstance() {
