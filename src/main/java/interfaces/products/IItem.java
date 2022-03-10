@@ -4,11 +4,11 @@ import java.io.Serializable;
 import model.PreservationCondition;
 
 public interface IItem extends Serializable{
-	String getID();
+	Integer getID();
 	void setID(Integer id);
 	
 	Integer getProductID();
-	void setProductID()throws IllegalArgumentException;
+	void setProductID(Integer id)throws IllegalArgumentException;
 	
 	PreservationCondition getPreservationCondition();
 	void setPreservationCondition(PreservationCondition condition)throws IllegalArgumentException;
