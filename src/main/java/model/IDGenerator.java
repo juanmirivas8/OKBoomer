@@ -1,6 +1,4 @@
 package model;
-
-
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -15,8 +13,9 @@ public class IDGenerator {
 	private Integer count;
 	private Queue<Integer> deletedNumbers;
 	public IDGenerator() {
-		count=1;
-		deletedNumbers = new LinkedList<Integer>();
+		if(deletedNumbers == null) {
+			deletedNumbers = new LinkedList<Integer>();
+		}
 	}
 	
 	Integer generateKey() {
@@ -24,14 +23,32 @@ public class IDGenerator {
 		
 		if(!deletedNumbers.isEmpty()) {
 			retValue = deletedNumbers.poll();
-			
 		}else {
 			count++;
 		}
 		return retValue;
 	}
 	
+	public Integer getCount() {
+		return count;
+	}
+
+	public void setCount(Integer count) {
+		this.count = count;
+	}
+
+	public Queue<Integer> getDeletedNumbers() {
+		return deletedNumbers;
+	}
+
+	public void setDeletedNumbers(Queue<Integer> deletedNumbers) {
+		this.deletedNumbers = deletedNumbers;
+	}
+
 	void eliminateKey(Integer key) {
-		deletedNumbers.add(key);
+		if(!deletedNumbers.contains(key)) {
+			deletedNumbers.add(key);
+		}
+		
 	}
 }

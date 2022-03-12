@@ -45,9 +45,9 @@ public class ClientsUI extends interfaces.AbstractUI implements interfaces.clien
 	
 	@Override
 	public void printClient(IClient c) {
-		System.out.println("\n######################");
+		System.out.println("");
 		System.out.println(c);
-		System.out.println("\n######################");
+		System.out.println("");
 	}
 
 	@Override
@@ -72,11 +72,11 @@ public class ClientsUI extends interfaces.AbstractUI implements interfaces.clien
 		System.out.println("");
 		System.out.println("______CLIENT MENU______");
 		System.out.println("[0] -> Return back");
-		System.out.println("[1] -> Insert new client");
-		System.out.println("[2] -> Modify existing client");
-		System.out.println("[3] -> Delete client");
-		System.out.println("[4] -> List clients");
-		System.out.println("[5] -> Find client");
+		System.out.println("|[1] -> Insert new client");
+		System.out.println("|[2] -> Modify existing client");
+		System.out.println("|[3] -> Delete client");
+		System.out.println("|[4] -> List clients");
+		System.out.println("|[5] -> Find client");
 		System.out.println("");
 	}
 

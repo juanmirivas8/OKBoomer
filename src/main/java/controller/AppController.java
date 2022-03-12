@@ -18,12 +18,13 @@ public class AppController extends interfaces.AbstractController implements inte
 		int opcion = 0;
 		do {
 			view.printMainMenu();
-			opcion = view.readOption(0,3);
-			
-			switch (opcion) {
-				case 0 ->exitProgram();
-			
-				case 1 ->clientController.clientMenu();
+			opcion = view.readOption(0,15);
+			if(opcion > 0 && opcion <= 5) {
+				clientController.clientMenu(opcion);
+			}else if(opcion > 5 && opcion <= 15) {
+				productController.productsMenu(opcion);
+			}else {
+				exitProgram();
 			}
 		}while(opcion!=0);
 	}

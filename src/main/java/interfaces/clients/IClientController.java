@@ -2,7 +2,7 @@ package interfaces.clients;
 
 public interface IClientController {
 
-	void clientMenu();
+	void clientMenu(Integer opcion);
 
 	void registerClient();
 
@@ -23,7 +23,5 @@ public interface IClientController {
 	void listClientsByPhoneNumber();
 
 	void listClientsByRegistrationDate();
-
-	void save();
 
 }

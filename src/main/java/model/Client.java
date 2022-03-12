@@ -67,7 +67,6 @@ public class Client implements interfaces.clients.IClient{
 		}else {
 			this.DNI = dni;
 		}
-		
 	}
 
 	
@@ -131,8 +130,8 @@ public class Client implements interfaces.clients.IClient{
 
 	@Override
 	public String toString() {
-		return "DNI =" + DNI + ",\nname = " + name + ",\nage = " + age + ",\nphoneNumber = " + phoneNumber
-				+ ",\nregistration Date = " + registrationDate;
+		return "DNI = " + DNI + " ,name = " + name + " ,age = " + age + " ,phoneNumber = " + phoneNumber
+				+ " ,registration Date = " + registrationDate;
 	}
 	
 	
