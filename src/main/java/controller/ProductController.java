@@ -18,39 +18,28 @@ public class ProductController extends AbstractController implements interfaces.
 		return instance;
 	}
 	@Override
-	public void productsMenu() {
-		Integer opcion = 0;
-		do {
-			productView.printProductsMenu();
-			
-			opcion = productView.readOption(0, 10);
-			
-			switch (opcion) {
-				case 0 -> productView.printReturnBack();
+	public void productsMenu(Integer opcion) {	
+			switch (opcion) {		
+				case 6 -> this.registerProduct();
 				
-				case 1 -> this.registerProduct();
+				case 7 -> this.modifyProduct();
 				
-				case 2 -> this.modifyProduct();
+				case 8 -> this.deleteProduct();
 				
-				case 3 -> this.deleteProduct();
+				case 9 -> this.listProducts();
 				
-				case 4 -> this.listProducts();
+				case 10 -> this.searchProduct();
 				
-				case 5 -> this.searchProduct();
+				case 11 -> this.registerItem();
 				
-				case 6 -> this.registerItem();
+				case 12 -> this.modifyItem();
 				
-				case 7 -> this.modifyItem();
+				case 13 -> this.deleteItem();
 				
-				case 8 -> this.deleteItem();
+				case 14 -> this.listItems();
 				
-				case 9 -> this.listItems();
-				
-				case 10->this.searchItem();
-			
+				case 15->this.searchItem();	
 			}
-		}while(opcion != 0);
-
 	}
 	@Override
 	public void registerProduct() {
@@ -101,6 +90,7 @@ public class ProductController extends AbstractController implements interfaces.
 		
 		if( p != null ) {
 			productView.operationResult(true);
+			productView.printProduct(p);
 		}else {
 			productView.operationResult(false);
 		}
@@ -112,8 +102,8 @@ public class ProductController extends AbstractController implements interfaces.
 		IItem i = items.delete(id);
 		
 		if( i != null ) {
-			products.delete(id);
 			productView.operationResult(true);
+			productView.printItem(i);
 		}else {
 			productView.operationResult(false);
 		}

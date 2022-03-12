@@ -20,15 +20,9 @@ public class ClientController extends interfaces.AbstractController implements i
 	}
 
 	@Override
-	public void clientMenu() {
-		int opcion = 0;
+	public void clientMenu(Integer opcion) {
 		
-		do {
-			clientView.printClientMenu();
-			opcion = clientView.readOption(0,5);
-			
 			switch (opcion) {
-				case 0 ->clientView.printReturnBack();
 			
 				case 1 ->registerClient();
 				
@@ -39,16 +33,14 @@ public class ClientController extends interfaces.AbstractController implements i
 				case 4 ->listClients();
 				
 				case 5 ->searchClient();
-
 			}
-		}while(opcion!=0);
-		
 	}
 
 	@Override
 	public void registerClient() {
 		IClient c = clientView.readClient();
-		clients.add((Client)c, c.getDNI());
+		Boolean res = clients.add((Client)c, c.getDNI());
+		clientView.operationResult(res);
 	}
 
 	@Override

@@ -2,7 +2,7 @@ package interfaces.products;
 
 public interface IProductsController {
 
-	void productsMenu();
+	void productsMenu(Integer opcion);
 	
 	void registerProduct();
 	

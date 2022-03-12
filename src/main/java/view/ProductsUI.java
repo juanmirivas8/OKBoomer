@@ -63,17 +63,17 @@ public class ProductsUI extends interfaces.AbstractUI implements interfaces.prod
 
 	@Override
 	public void printProduct(IProduct p) {
-		System.out.println("\n##############");
+		System.out.println("");
 		System.out.println(p);
-		System.out.println("\n##############");
+		System.out.println("");
 		
 	}
 
 	@Override
 	public void printItem(IItem i) {
-		System.out.println("\n##############");
+		System.out.println("");
 		System.out.println(i);
-		System.out.println("\n##############");
+		System.out.println("");
 		
 	}
 

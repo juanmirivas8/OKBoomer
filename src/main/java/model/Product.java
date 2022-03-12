@@ -105,7 +105,7 @@ public class Product implements interfaces.products.IProduct{
 
 	@Override
 	public String toString() {
-		return title + "\nID = " + id + "\nLength (minutes) =" + length + "\nRating=" + rating + ", Price(euro/day) = "
+		return title + " ,ID = " + id + " ,Length (minutes) = " + length + " ,Rating = " + rating + " ,Price(euro/day) = "
 				+ price;
 	}
 	

@@ -2,7 +2,7 @@ package interfaces.clients;
 
 public interface IClientController {
 
-	void clientMenu();
+	void clientMenu(Integer opcion);
 
 	void registerClient();
 

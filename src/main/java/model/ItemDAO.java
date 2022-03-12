@@ -3,7 +3,6 @@ package model;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -26,7 +25,7 @@ public class ItemDAO extends interfaces.AbstractDAO<Integer, Item> implements in
 	private IDGenerator keygen;
 	
 	private ItemDAO() {
-		// TODO Auto-generated constructor stub
+		
 		keygen = new IDGenerator();
 	}
 	
@@ -35,6 +34,7 @@ public class ItemDAO extends interfaces.AbstractDAO<Integer, Item> implements in
 			instance = new ItemDAO();
 				ItemDAO aux = load();
 				instance.ddbb = aux.ddbb;
+				instance.keygen = aux.keygen;
 		}
 		return instance;
 	}
@@ -106,7 +106,6 @@ public class ItemDAO extends interfaces.AbstractDAO<Integer, Item> implements in
 	
 	@Override
 	public Item delete(Integer k) {
-		// TODO Auto-generated method stub
 		keygen.eliminateKey(k);
 		return super.delete(k);
 	}

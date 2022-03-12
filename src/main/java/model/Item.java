@@ -51,7 +51,7 @@ public class Item implements interfaces.products.IItem {
 
 	@Override
 	public String toString() {
-		return "ID = " + ID + ", product ID = " + productID + ", Preservation Condition = " + PreservationCondition + "]";
+		return "ID = " + ID + ", product ID = " + productID + ", Preservation Condition = " + PreservationCondition;
 	}
 
 	@Override
