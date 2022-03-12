@@ -16,4 +16,6 @@ public interface IItemDAO {
 	
 	void save();
 	
+	Item search(Integer id);
+	
 }

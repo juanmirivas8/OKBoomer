@@ -102,5 +102,13 @@ public class Product implements interfaces.products.IProduct{
 		}
 		this.rating = rating;
 	}
+
+	@Override
+	public String toString() {
+		return title + "\nID = " + id + "\nLength (minutes) =" + length + "\nRating=" + rating + ", Price(euro/day) = "
+				+ price;
+	}
+	
+	
 	
 }

@@ -15,6 +15,10 @@ public class Item implements interfaces.products.IItem {
     private Integer productID;
     private PreservationCondition PreservationCondition;
 
+    @SuppressWarnings("unused")
+	private Item() {
+    	
+    }
     public Item(Integer productID, PreservationCondition status) {
     	this.setProductID(productID);
     	this.setPreservationCondition(status);

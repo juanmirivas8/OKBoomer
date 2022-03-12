@@ -27,8 +27,8 @@ public class ProductsUI extends interfaces.AbstractUI implements interfaces.prod
 	@Override
 	public IProduct readProduct() {
 		String Title = sc.readString("Insert Title: ");
-		Integer length = sc.readIntBucle("Insert length: ", 0, 8);
-		Double  price = sc.readDoubleBucle("Insert price: ", 0.0, Double.MAX_VALUE );
+		Integer length = sc.readIntBucle("Insert length: ", 0, Integer.MAX_VALUE);
+		Double price = sc.readDoubleBucle("Insert price: ", 0.0, Double.MAX_VALUE );
 		MCRS rating = (MCRS)sc.readEnumBucle("Insert rating: ", MCRS.class);
 		
 		return new Product(Title, length, price, rating);
@@ -44,7 +44,7 @@ public class ProductsUI extends interfaces.AbstractUI implements interfaces.prod
 	@Override
 	public void modifyProduct(IProduct p) {
 		String Title = sc.readString("Insert Title: ");
-		Integer length = sc.readIntBucle("Insert length: ", 0, 8);
+		Integer length = sc.readIntBucle("Insert length: ", 0, Integer.MAX_VALUE);
 		Double  price = sc.readDoubleBucle("Insert price: ", 0.0, Double.MAX_VALUE );
 		MCRS rating = (MCRS)sc.readEnumBucle("Insert rating: ",  MCRS.class);
 		p.setTitle(Title);
@@ -56,7 +56,7 @@ public class ProductsUI extends interfaces.AbstractUI implements interfaces.prod
 	@Override
 	public void modifyItem(IItem i) {
 		Integer ProductID = sc.readIntBucle("Insert Product ID: ");
-		PreservationCondition condition = (PreservationCondition)sc.readEnumBucle("Enter a PreservationCondition", PreservationCondition.class);
+		PreservationCondition condition = (PreservationCondition)sc.readEnumBucle("Enter the preservation condition: ", PreservationCondition.class);
 		i.setID(ProductID);
 		i.setPreservationCondition(condition);
 	}
@@ -79,26 +79,22 @@ public class ProductsUI extends interfaces.AbstractUI implements interfaces.prod
 
 	@Override
 	public void printProductsMenu() {
-		System.out.println("");
-		System.out.println("____PRODUCT MENU____");
-		System.out.println("[0] -> Return back");
-		System.out.println("[1] -> Insert new product");
-		System.out.println("[2] -> Modify existing product");
-		System.out.println("[3] -> Delete product");
-		System.out.println("[4] -> List product");
-		System.out.println("[5] -> Find product");
-		System.out.println("[6] -> Insert new Item");
-		System.out.println("[7] -> Modify existing item");
-		System.out.println("[8] -> Delete item");
-		System.out.println("[9] -> List items");
-		System.out.println("[10] -> Find item");
+		System.out.println("|____________________________________________________________̣______________|");
+		System.out.println("|-------------PRODUCT MENU-------------|------------ITEMS MENU-------------|");
+		System.out.println("|[0] -> Return back                    |[6] -> Insert new Item             |");
+		System.out.println("|[1] -> Insert new product             |[7] -> Modify existing item        |");
+		System.out.println("|[2] -> Modify existing product        |[8] -> Delete item                 |");
+		System.out.println("|[3] -> Delete product                 |[9] -> List items                  |");
+		System.out.println("|[4] -> List product                   |[10] -> Find item                  |");
+		System.out.println("|[5] -> Find product                   |                                   |");
+		System.out.println("|____________________________________________________________̣______________|");
 		
 	}
 
 	@Override
 	public void printProductsListMenu() {
 		System.out.println("[0] -> Go back");
-		System.out.println("[1] -> Show products by type");
+		System.out.println("[1] -> Show products by title");
 		System.out.println("[2] -> Show products by id");
 		System.out.println("[3] -> Show products by length");
 		System.out.println("[4] -> Show products by price");

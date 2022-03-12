@@ -24,6 +24,8 @@ public class AppController extends interfaces.AbstractController implements inte
 				case 0 ->exitProgram();
 			
 				case 1 ->clientController.clientMenu();
+				
+				case 2 ->productController.productsMenu();
 			}
 		}while(opcion!=0);
 	}

@@ -3,6 +3,7 @@ package model;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -32,8 +33,8 @@ public class ItemDAO extends interfaces.AbstractDAO<Integer, Item> implements in
 	public static ItemDAO newInstance() {
 		if (instance == null) {
 			instance = new ItemDAO();
-			ItemDAO aux = load();
-			instance.ddbb = aux.ddbb;
+				ItemDAO aux = load();
+				instance.ddbb = aux.ddbb;
 		}
 		return instance;
 	}
@@ -98,7 +99,6 @@ public class ItemDAO extends interfaces.AbstractDAO<Integer, Item> implements in
 
 	@Override
 	public Boolean add(IItem i) {
-		// TODO Auto-generated method stub
 		Integer key = keygen.generateKey();
 		i.setID(key);
 		return super.add((Item)i, key);

@@ -137,10 +137,5 @@ public class ClientController extends interfaces.AbstractController implements i
 	public void listClientsByRegistrationDate() {
 		clientView.printList(clients.listOfClientsByRegistrationDate());
 	}
-
-	@Override
-	public void save() {
-		clients.save();
-	}
 	
 }

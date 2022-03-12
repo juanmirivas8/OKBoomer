@@ -24,6 +24,4 @@ public interface IClientController {
 
 	void listClientsByRegistrationDate();
 
-	void save();
-
 }

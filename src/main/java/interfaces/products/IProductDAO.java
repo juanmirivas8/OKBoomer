@@ -15,5 +15,7 @@ public interface IProductDAO {
 	
 	IProduct delete(Integer key);
 	
+	Product search(Integer id);
+	
 	void save();
 }

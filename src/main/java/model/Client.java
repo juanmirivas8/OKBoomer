@@ -67,7 +67,6 @@ public class Client implements interfaces.clients.IClient{
 		}else {
 			this.DNI = dni;
 		}
-		
 	}
 
 	
