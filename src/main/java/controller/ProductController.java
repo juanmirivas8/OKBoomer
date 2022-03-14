@@ -86,7 +86,13 @@ public class ProductController extends AbstractController implements interfaces.
 	@Override
 	public void deleteProduct() {
 		Integer id = productView.readID();
-		IProduct p = products.delete(id);
+		
+		Boolean finded = items.findProduct(id);
+		
+		IProduct p = null;
+		if(!finded) {
+			p = products.delete(id);
+		}
 		
 		if( p != null ) {
 			productView.operationResult(true);

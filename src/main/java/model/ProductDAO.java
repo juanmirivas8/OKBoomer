@@ -111,7 +111,9 @@ public class ProductDAO extends interfaces.AbstractDAO<Integer,Product> implemen
 	
 	@Override
 	public Product delete(Integer k) {
-		keygen.eliminateKey(k);
+		if(ddbb.containsKey(k)) {
+			keygen.eliminateKey(k);
+		}
 		return super.delete(k);
 	}
 }

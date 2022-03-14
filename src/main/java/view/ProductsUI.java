@@ -72,7 +72,7 @@ public class ProductsUI extends interfaces.AbstractUI implements interfaces.prod
 	@Override
 	public void printItem(IItem i) {
 		System.out.println("");
-		System.out.println(i);
+		System.out.println("Title: "+products.search(i.getProductID()).getTitle() +" - "+ i);
 		System.out.println("");
 		
 	}

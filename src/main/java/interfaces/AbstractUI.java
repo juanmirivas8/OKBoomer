@@ -1,13 +1,25 @@
 package interfaces;
 
+import interfaces.clients.IClientDAO;
+import interfaces.products.IItemDAO;
+import interfaces.products.IProductDAO;
+import model.ClientDAO;
+import model.ItemDAO;
+import model.ProductDAO;
 import view.Escaner;
 
 public abstract class AbstractUI {
 
 	protected Escaner sc;
+	protected IClientDAO clients;
+	protected IProductDAO products;
+	protected IItemDAO items;
 	
 	public AbstractUI() {
 		sc = Escaner.newInstance();
+		clients = ClientDAO.newInstance();
+		products = ProductDAO.newInstance();
+		items = ItemDAO.newInstance();
 	}
 	
 	public Integer readOption(Integer inf, Integer sup) {
