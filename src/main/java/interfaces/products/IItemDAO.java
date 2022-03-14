@@ -18,4 +18,6 @@ public interface IItemDAO {
 	
 	Item search(Integer id);
 	
+	Boolean findProduct(Integer id);
+	
 }

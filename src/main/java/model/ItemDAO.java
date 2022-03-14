@@ -106,8 +106,20 @@ public class ItemDAO extends interfaces.AbstractDAO<Integer, Item> implements in
 	
 	@Override
 	public Item delete(Integer k) {
-		keygen.eliminateKey(k);
+		if(ddbb.containsKey(k)) {
+			keygen.eliminateKey(k);
+		}
 		return super.delete(k);
+	}
+
+	@Override
+	public Boolean findProduct(Integer id) {
+		for(Item c: ddbb.values()) {
+			if(c.getProductID() == id) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 }
