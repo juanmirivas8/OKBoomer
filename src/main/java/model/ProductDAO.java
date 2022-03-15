@@ -30,8 +30,9 @@ public class ProductDAO extends interfaces.AbstractDAO<Integer,Product> implemen
 	public static ProductDAO newInstance() {
 		if(instance == null) {
 			instance = new ProductDAO();
-			ProductDAO aux = (ProductDAO)load();
+			ProductDAO aux = load();
 			instance.ddbb = aux.ddbb;
+			instance.keygen = aux.keygen;
 		}
 		return instance;
 	}
@@ -50,7 +51,7 @@ public class ProductDAO extends interfaces.AbstractDAO<Integer,Product> implemen
 		}
 	}
 	
-	public static ProductDAO load() {
+	private static ProductDAO load() {
 		JAXBContext contexto;
 		ProductDAO newDDBB = null;
 		try {
@@ -59,7 +60,6 @@ public class ProductDAO extends interfaces.AbstractDAO<Integer,Product> implemen
 		     
 		    //We had written this file in marshalling example
 		    newDDBB = (ProductDAO) um.unmarshal( new File("/home/juanmi_rivas_8/Desktop/OKBoomer/src/main/resources/products.xml") );
-	
 		} catch (JAXBException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -105,14 +105,15 @@ public class ProductDAO extends interfaces.AbstractDAO<Integer,Product> implemen
 
 	@Override
 	public Boolean add(IProduct p) {
-		Integer key = keygen.generateKey();
-		p.setID(key);
-		return super.add((Product)p, key);
+		p.setID(keygen.generateKey());
+		return super.add((Product)p, p.getID());
 	}
 	
 	@Override
 	public Product delete(Integer k) {
-		keygen.eliminateKey(k);
+		if(ddbb.containsKey(k)) {
+			keygen.eliminateKey(k);
+		}
 		return super.delete(k);
 	}
 }

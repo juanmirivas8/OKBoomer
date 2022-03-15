@@ -2,6 +2,36 @@
 <clientDAO>
     <ddbb>
         <entry>
+            <key xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">13542678M</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="client">
+                <age>45</age>
+                <name>Raul</name>
+                <DNI>13542678M</DNI>
+                <phoneNumber>670943211</phoneNumber>
+                <registrationDate>2022-03-12 18:52:53:88</registrationDate>
+            </value>
+        </entry>
+        <entry>
+            <key xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">87659876M</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="client">
+                <age>40</age>
+                <name>Carlos Serrano</name>
+                <DNI>87659876M</DNI>
+                <phoneNumber>135797531</phoneNumber>
+                <registrationDate>2022-03-12 13:36:54:25</registrationDate>
+            </value>
+        </entry>
+        <entry>
+            <key xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">34567892D</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="client">
+                <age>29</age>
+                <name>Miguel Morales</name>
+                <DNI>34567892D</DNI>
+                <phoneNumber>973651043</phoneNumber>
+                <registrationDate>2022-03-12 14:29:13:46</registrationDate>
+            </value>
+        </entry>
+        <entry>
             <key xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">00000000A</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="client">
                 <age>20</age>

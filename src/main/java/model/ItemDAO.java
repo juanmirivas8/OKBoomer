@@ -25,15 +25,16 @@ public class ItemDAO extends interfaces.AbstractDAO<Integer, Item> implements in
 	private IDGenerator keygen;
 	
 	private ItemDAO() {
-		// TODO Auto-generated constructor stub
+		
 		keygen = new IDGenerator();
 	}
 	
 	public static ItemDAO newInstance() {
 		if (instance == null) {
 			instance = new ItemDAO();
-			ItemDAO aux = (ItemDAO)load();
-			instance.ddbb = aux.ddbb;
+				ItemDAO aux = load();
+				instance.ddbb = aux.ddbb;
+				instance.keygen = aux.keygen;
 		}
 		return instance;
 	}
@@ -54,7 +55,7 @@ public class ItemDAO extends interfaces.AbstractDAO<Integer, Item> implements in
 		}
 	}
 
-	public static ItemDAO load() {
+	private static ItemDAO load() {
 		// TODO Auto-generated method stub
 		JAXBContext c;
 		ItemDAO newDDBB = null;
@@ -98,7 +99,6 @@ public class ItemDAO extends interfaces.AbstractDAO<Integer, Item> implements in
 
 	@Override
 	public Boolean add(IItem i) {
-		// TODO Auto-generated method stub
 		Integer key = keygen.generateKey();
 		i.setID(key);
 		return super.add((Item)i, key);
@@ -106,9 +106,20 @@ public class ItemDAO extends interfaces.AbstractDAO<Integer, Item> implements in
 	
 	@Override
 	public Item delete(Integer k) {
-		// TODO Auto-generated method stub
-		keygen.eliminateKey(k);
+		if(ddbb.containsKey(k)) {
+			keygen.eliminateKey(k);
+		}
 		return super.delete(k);
+	}
+
+	@Override
+	public Boolean findProduct(Integer id) {
+		for(Item c: ddbb.values()) {
+			if(c.getProductID() == id) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 }

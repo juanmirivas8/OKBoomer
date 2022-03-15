@@ -11,10 +11,14 @@ import interfaces.reservations.IReservationController;
 import interfaces.reservations.IReservationDAO;
 import interfaces.reservations.IReservationUI;
 import model.ClientDAO;
+import model.ItemDAO;
+import model.ProductDAO;
 import controller.ClientController;
 import view.ClientsUI;
+import view.ProductsUI;
 import view.UI;
 import controller.AppController;
+import controller.ProductController;
 
 public abstract class AbstractController {
 	protected static IClientDAO clients;
@@ -37,9 +41,16 @@ public abstract class AbstractController {
 			instanciated = true;
 			view = UI.newInstance();
 			appController = AppController.newInstance();
+			
 			clients = ClientDAO.newInstance();
 			clientController = ClientController.newInstance();
-			clientView = ClientsUI.newInstance();			
+			clientView = ClientsUI.newInstance();	
+			
+			products = ProductDAO.newInstance();
+			items = ItemDAO.newInstance();
+			productController = ProductController.newInstance();
+			productView = ProductsUI.newInstance();
+			
 		}	
 	}
 	
@@ -47,6 +58,8 @@ public abstract class AbstractController {
 	
 	public void save() {
 		clients.save();
+		products.save();
+		items.save();
 	}
 	
 }

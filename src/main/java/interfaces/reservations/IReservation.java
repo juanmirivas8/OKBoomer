@@ -23,7 +23,7 @@ public interface IReservation {
 	void setStatus(Boolean status)throws IllegalArgumentException;
 	
 	Integer getID();
-	void setID();
+	void setID()throws IllegalArgumentException;
 	
 	@Override
 	public int hashCode();

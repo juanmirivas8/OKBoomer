@@ -20,7 +20,7 @@ public class Product implements interfaces.products.IProduct{
 		
 	}
 	
-	public Product(String title,Integer id, Integer length,Double price,MCRS rating) {
+	public Product(String title,Integer length,Double price,MCRS rating) {
 		super();
 		try {
 			this.setTitle(title);
@@ -102,5 +102,13 @@ public class Product implements interfaces.products.IProduct{
 		}
 		this.rating = rating;
 	}
+
+	@Override
+	public String toString() {
+		return title + " ,ID = " + id + " ,Length (minutes) = " + length + " ,Rating = " + rating + " ,Price(euro/day) = "
+				+ price;
+	}
+	
+	
 	
 }

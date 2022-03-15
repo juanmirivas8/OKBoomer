@@ -15,7 +15,14 @@ public class Item implements interfaces.products.IItem {
     private Integer productID;
     private PreservationCondition PreservationCondition;
 
-
+    @SuppressWarnings("unused")
+	private Item() {
+    	
+    }
+    public Item(Integer productID, PreservationCondition status) {
+    	this.setProductID(productID);
+    	this.setPreservationCondition(status);
+    }
     public Integer getID() {
         return this.ID;
     }
@@ -44,7 +51,7 @@ public class Item implements interfaces.products.IItem {
 
 	@Override
 	public String toString() {
-		return "ID = " + ID + ", product ID = " + productID + ", Preservation Condition = " + PreservationCondition + "]";
+		return "ID = " + ID + ", product ID = " + productID + ", Preservation Condition = " + PreservationCondition;
 	}
 
 	@Override
