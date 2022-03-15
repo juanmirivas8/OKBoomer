@@ -9,7 +9,7 @@ import interfaces.reservations.IReservationUI;
 import model.Reservation;
 
 public class ReservationsUI extends AbstractUI implements IReservationUI{
-
+	
 	@Override
 	public void printReservationList(Collection<Reservation> r) {
 		// TODO Auto-generated method stub
