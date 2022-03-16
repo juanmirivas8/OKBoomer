@@ -18,5 +18,4 @@ public interface IReservationDAO {
 	
 	void save();
 
-
 }
