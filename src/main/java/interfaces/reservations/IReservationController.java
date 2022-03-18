@@ -12,5 +12,4 @@ public interface IReservationController {
 	void searchReservation();
 	
 	void listReservations();
-	
 }
