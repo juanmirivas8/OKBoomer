@@ -4,6 +4,7 @@ import java.util.Collection;
 import model.Reservation;
 
 public interface IReservationDAO {
+
 	Collection<Reservation> listOfReservationByDNI();
 	Collection<Reservation> listOfReservationByID();
 	Collection<Reservation> listOfReservationByStatus();
