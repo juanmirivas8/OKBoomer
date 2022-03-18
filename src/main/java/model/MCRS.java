@@ -24,4 +24,5 @@ public enum MCRS implements Serializable{
 	public String getRating() {
 		return this.rating;
 	}
+
 }
