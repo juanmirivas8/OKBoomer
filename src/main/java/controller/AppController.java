@@ -1,6 +1,8 @@
 package controller;
 
-public class AppController extends interfaces.AbstractController implements interfaces.IAppController{
+import interfaces.API;
+
+public class AppController extends API implements interfaces.IAppController{
 
 	private AppController() {
 		super();

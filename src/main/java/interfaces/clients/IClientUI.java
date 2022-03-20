@@ -15,14 +15,7 @@ public interface IClientUI {
 	void printClientMenu();
 	
 	void printListMenu();
-	
-	void operationResult(Boolean res);
 
 	void printList(Collection<Client> c);
 
-	void printReturnBack();
-	
-	String readDNI();
-	
-	Integer readOption(Integer inf, Integer sup);
 }

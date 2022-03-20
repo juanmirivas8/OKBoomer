@@ -1,9 +1,10 @@
 package controller;
 
+import interfaces.API;
 import interfaces.clients.IClient;
 import model.Client;
 
-public class ClientController extends interfaces.AbstractController implements interfaces.clients.IClientController{
+public class ClientController extends API implements interfaces.clients.IClientController{
 
 	private static ClientController instance = null;
 	
@@ -40,43 +41,43 @@ public class ClientController extends interfaces.AbstractController implements i
 	public void registerClient() {
 		IClient c = clientView.readClient();
 		Boolean res = clients.add((Client)c, c.getDNI());
-		clientView.operationResult(res);
+		view.operationResult(res);
 	}
 
 	@Override
 	public void deleteClient() {
-		String dni = clientView.readDNI();
+		String dni = view.readDNI();
 		IClient c = clients.delete(dni);
 		
 		if(c == null) {
-			clientView.operationResult(false);
+			view.operationResult(false);
 		}else {
-			clientView.operationResult(true);
+			view.operationResult(true);
 			clientView.printClient(c);
 		}
 	}
 
 	@Override
 	public void modifyClient() {
-		String dni = clientView.readDNI();
+		String dni = view.readDNI();
 		IClient c = clients.search(dni);
 		if(c != null) {
 			clientView.modifyClient(c);
-			clientView.operationResult(true);
+			view.operationResult(true);
 		}else {
-			clientView.operationResult(false);
+			view.operationResult(false);
 		}
 	}
 
 	@Override
 	public void searchClient() {
-		String dni = clientView.readDNI();
+		String dni = view.readDNI();
 		IClient c = clients.search(dni);
 		
 		if(c!=null) {
 			clientView.printClient(c);
 		}else {
-			clientView.operationResult(false);
+			view.operationResult(false);
 		}
 	}
 
@@ -86,10 +87,10 @@ public class ClientController extends interfaces.AbstractController implements i
 		
 		do {
 			clientView.printListMenu();
-			opcion = clientView.readOption(0,5);
+			opcion = view.readOption(0,5);
 			
 			switch (opcion) {
-				case 0 ->clientView.printReturnBack();
+				case 0 ->view.printReturnBack();
 			
 				case 1 ->listClientsByName();
 				

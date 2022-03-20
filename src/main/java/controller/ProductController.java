@@ -1,10 +1,10 @@
 package controller;
 
-import interfaces.AbstractController;
+import interfaces.API;
 import interfaces.products.IItem;
 import interfaces.products.IProduct;
 
-public class ProductController extends AbstractController implements interfaces.products.IProductsController{
+public class ProductController extends API implements interfaces.products.IProductsController{
 
 	private ProductController() {
 		super();
@@ -46,7 +46,7 @@ public class ProductController extends AbstractController implements interfaces.
 		IProduct p = productView.readProduct();
 		Boolean res = products.add(p);
 		
-		productView.operationResult(res);
+		view.operationResult(res);
 		
 	}
 	@Override
@@ -55,37 +55,37 @@ public class ProductController extends AbstractController implements interfaces.
 		if(products.search(i.getProductID())!=null) {
 			Boolean res = items.add(i);
 			
-			productView.operationResult(res);
+			view.operationResult(res);
 		}else {
-			productView.operationResult(false);
+			view.operationResult(false);
 		}
 	}
 	@Override
 	public void modifyProduct() {
-		Integer id = productView.readID();
+		Integer id = view.readID();
 		IProduct p = products.search(id);
 		if( p != null) {
 			productView.modifyProduct(p);
-			productView.operationResult(true);
+			view.operationResult(true);
 		}else {
-			productView.operationResult(false);
+			view.operationResult(false);
 		}
 	}
 	@Override
 	public void modifyItem() {
-		Integer id = productView.readID();
+		Integer id = view.readID();
 		IItem i = items.search(id);
 		
 		if( i != null ) {
 			productView.modifyItem(i);
-			productView.operationResult(true);
+			view.operationResult(true);
 		}else {
-			productView.operationResult(false);
+			view.operationResult(false);
 		}
 	}
 	@Override
 	public void deleteProduct() {
-		Integer id = productView.readID();
+		Integer id = view.readID();
 		
 		Boolean finded = items.findProduct(id);
 		
@@ -95,46 +95,46 @@ public class ProductController extends AbstractController implements interfaces.
 		}
 		
 		if( p != null ) {
-			productView.operationResult(true);
+			view.operationResult(true);
 			productView.printProduct(p);
 		}else {
-			productView.operationResult(false);
+			view.operationResult(false);
 		}
 		
 	}
 	@Override
 	public void deleteItem() {
-		Integer id = productView.readID();
+		Integer id = view.readID();
 		IItem i = items.delete(id);
 		
 		if( i != null ) {
-			productView.operationResult(true);
+			view.operationResult(true);
 			productView.printItem(i);
 		}else {
-			productView.operationResult(false);
+			view.operationResult(false);
 		}
 	}
 	@Override
 	public void searchProduct() {
-		Integer id = productView.readID();
+		Integer id = view.readID();
 		IProduct p = products.search(id);
 		
 		if(p != null) {
 			productView.printProduct(p);
 		}else {
-			productView.operationResult(false);
+			view.operationResult(false);
 		}
 		
 	}
 	@Override
 	public void searchItem() {
-		Integer id = productView.readID();
+		Integer id = view.readID();
 		IItem i = items.search(id);
 		
 		if(i != null) {
 			productView.printItem(i);
 		}else {
-			productView.operationResult(false);
+			view.operationResult(false);
 		}
 	}
 	@Override
@@ -143,10 +143,10 @@ public class ProductController extends AbstractController implements interfaces.
 		do {
 			productView.printProductsListMenu();
 			
-			opcion = productView.readOption(0, 5);
+			opcion = view.readOption(0, 5);
 			
 			switch (opcion) {
-				case 0 -> productView.printReturnBack();
+				case 0 -> view.printReturnBack();
 				
 				case 1 -> productView.printProductList(products.listOfItemsByTitle());
 				
@@ -166,10 +166,10 @@ public class ProductController extends AbstractController implements interfaces.
 		do {
 			productView.printItemsListMenu();
 			
-			opcion = productView.readOption(0, 3);
+			opcion = view.readOption(0, 3);
 			
 			switch (opcion) {
-				case 0 -> productView.printReturnBack();
+				case 0 -> view.printReturnBack();
 				
 				case 1 -> productView.printItemList(items.listOfItemsByKey());
 				

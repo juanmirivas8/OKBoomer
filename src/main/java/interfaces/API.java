@@ -15,12 +15,14 @@ import model.ItemDAO;
 import model.ProductDAO;
 import controller.ClientController;
 import view.ClientsUI;
+import view.Escaner;
 import view.ProductsUI;
 import view.UI;
 import controller.AppController;
 import controller.ProductController;
 
-public abstract class AbstractController {
+public abstract class API {
+	protected static Escaner sc;
 	protected static IClientDAO clients;
 	protected static IProductDAO products;
 	protected static IItemDAO items;
@@ -36,9 +38,10 @@ public abstract class AbstractController {
 	protected static IReservationController reservationController;
 	protected static IAppController appController;
 	
-	protected AbstractController() {
+	protected API() {
 		if(!instanciated) {
 			instanciated = true;
+			sc = Escaner.newInstance();
 			view = UI.newInstance();
 			appController = AppController.newInstance();
 			
