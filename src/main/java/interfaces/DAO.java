@@ -5,7 +5,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-public abstract class AbstractDAO<K,V> implements CRUD<K,V>{
+public abstract class DAO<K,V> implements CRUD<K,V>{
 
 	private static final long serialVersionUID = 1L;
 	public HashMap<K,V> ddbb;

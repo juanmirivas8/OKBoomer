@@ -2,10 +2,11 @@ package view;
 
 import java.util.Collection;
 
+import interfaces.API;
 import interfaces.clients.IClient;
 import model.Client;
 
-public class ClientsUI extends interfaces.AbstractUI implements interfaces.clients.IClientUI{
+public class ClientsUI extends API implements interfaces.clients.IClientUI{
 
 	private ClientsUI(){
 		super();
@@ -45,20 +46,17 @@ public class ClientsUI extends interfaces.AbstractUI implements interfaces.clien
 	
 	@Override
 	public void printClient(IClient c) {
-		System.out.println("");
-		System.out.println(c);
-		System.out.println("");
+		System.out.println("\n"+c+"\n");
 	}
 
 	@Override
 	public void printList(Collection<Client> c) {
-		c.forEach(x->printClient(x));
+		c.forEach(this::printClient);
 	}
 
 	@Override
 	public void printListMenu() {
-		System.out.println("");
-		System.out.println("[0] -> Go Back");
+		System.out.println("\n[0] -> Go Back");
 		System.out.println("[1] -> Show clients by name");
 		System.out.println("[2] -> Show clients by DNI");
 		System.out.println("[3] -> Show clients by age");
@@ -68,15 +66,14 @@ public class ClientsUI extends interfaces.AbstractUI implements interfaces.clien
 
 	@Override
 	public void printClientMenu() {
-		System.out.println("");
-		System.out.println("______CLIENT MENU______");
+		System.out.println("\n______CLIENT MENU______");
 		System.out.println("[0] -> Return back");
 		System.out.println("|[1] -> Insert new client");
 		System.out.println("|[2] -> Modify existing client");
 		System.out.println("|[3] -> Delete client");
 		System.out.println("|[4] -> List clients");
-		System.out.println("|[5] -> Find client");
-		System.out.println("");
+		System.out.println("|[5] -> Find client\n");
+
 	}
 
 }

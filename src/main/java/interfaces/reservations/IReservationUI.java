@@ -14,16 +14,7 @@ public interface IReservationUI {
 	void closeReservation(IReservation r);
 	
 	void printReservation(IReservation r);
-	
-	void printReturnBack();
-	
-	void operationResult(Boolean res);
-	
+
 	void printReservationListMenu();
-	
-	Integer readID();
-	
-	String readDNI();
-	
-	LocalDateTime readDate();
+
 }

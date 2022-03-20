@@ -5,7 +5,7 @@ import model.Product;
 import model.Item;
 
 public interface IProductsUI {
-	Integer readOption(Integer inf, Integer sup);
+
 	
 	IProduct readProduct();
 	IItem readItem();
@@ -18,18 +18,11 @@ public interface IProductsUI {
 		
 	void printProductsMenu();
 	
-	void printReturnBack();
-	
-	void operationResult(Boolean res);
-	
 	void printProductsListMenu();
 	void printItemsListMenu();
 	
 	void printProductList(Collection<Product> p);
 	
 	void printItemList(Collection<Item> p);
-	
-	Integer readID();
-	
-	
+
 }

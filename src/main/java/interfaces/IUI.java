@@ -6,4 +6,12 @@ public interface IUI {
 	void printExitProgram();
 	
 	Integer readOption(Integer inf, Integer sup);
+
+	void printReturnBack();
+
+	void operationResult(Boolean res);
+
+	Integer readID();
+
+	String readDNI();
 }

@@ -9,7 +9,7 @@ import model.MCRS;
 import model.PreservationCondition;
 import model.Product;
 
-public class ProductsUI extends interfaces.AbstractUI implements interfaces.products.IProductsUI {
+public class ProductsUI extends interfaces.API implements interfaces.products.IProductsUI {
 	
 	private ProductsUI(){
 		super();

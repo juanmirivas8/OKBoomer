@@ -1,5 +1,7 @@
 package model;
 
+import interfaces.DAO;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -16,7 +18,7 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlSeeAlso(Client.class)
-public class ClientDAO extends interfaces.AbstractDAO<String,Client> implements interfaces.clients.IClientDAO{
+public class ClientDAO extends DAO<String,Client> implements interfaces.clients.IClientDAO{
 
 	private static ClientDAO instance= null;
 	private static final long serialVersionUID = 1L;

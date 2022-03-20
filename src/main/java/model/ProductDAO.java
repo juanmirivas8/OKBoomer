@@ -13,12 +13,13 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
 
+import interfaces.DAO;
 import interfaces.products.IProduct;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlSeeAlso(Product.class)
-public class ProductDAO extends interfaces.AbstractDAO<Integer,Product> implements interfaces.products.IProductDAO{
+public class ProductDAO extends DAO<Integer,Product> implements interfaces.products.IProductDAO{
 	
 	private static ProductDAO instance= null;
 	private static final long serialVersionUID = 1L;

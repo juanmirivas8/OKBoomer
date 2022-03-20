@@ -2,11 +2,11 @@ package model;
 
 import java.util.Collection;
 
-import interfaces.AbstractDAO;
+import interfaces.DAO;
 import interfaces.reservations.IReservation;
 import interfaces.reservations.IReservationDAO;
 
-public class ReservationDAO extends AbstractDAO<Integer,Reservation> implements IReservationDAO{
+public class ReservationDAO extends DAO<Integer,Reservation> implements IReservationDAO{
 
 	@Override
 	public Collection<Reservation> listOfReservationByDNI() {
