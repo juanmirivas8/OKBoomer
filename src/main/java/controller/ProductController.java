@@ -156,7 +156,7 @@ public class ProductController extends AbstractController implements interfaces.
 				
 				case 4 -> productView.printProductList(products.listOfItemsByPrice());
 				
-				case 5 -> productView.printProductList(products.listOfItemsByPrice());
+				case 5 -> productView.printProductList(products.listOfItemsByRating());
 			}
 		}while(opcion != 0);
 	}
