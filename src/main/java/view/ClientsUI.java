@@ -53,7 +53,6 @@ public class ClientsUI extends interfaces.AbstractUI implements interfaces.clien
 	@Override
 	public void printList(Collection<Client> c) {
 		c.forEach(x->printClient(x));
-		
 	}
 
 	@Override

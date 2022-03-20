@@ -26,7 +26,6 @@ public class ProductDAO extends interfaces.AbstractDAO<Integer,Product> implemen
 	private ProductDAO() {
 		keygen = new IDGenerator();
 	}
-	
 	public static ProductDAO newInstance() {
 		if(instance == null) {
 			instance = new ProductDAO();
@@ -100,6 +99,7 @@ public class ProductDAO extends interfaces.AbstractDAO<Integer,Product> implemen
 	public Collection<Product> listOfItemsByRating() {
 		EnumComparator c = new EnumComparator();
 		ArrayList<Product> p = new ArrayList<>(ddbb.values()); 
+		//p.sort(c);
 		//p.sort((p1,p2)->p1.getRating().compareTo(p2.getRating()));
 		p.sort((o1,o2)->{return o1.getRating().getAge()-o2.getRating().getAge();});
 		return p;
