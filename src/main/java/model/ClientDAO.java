@@ -44,7 +44,7 @@ public class ClientDAO extends DAO<String,Client> implements interfaces.clients.
 			Marshaller m = contexto.createMarshaller();
 			m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 			
-			m.marshal(instance, new File("/home/juanmi_rivas_8/Desktop/OKBoomer/src/main/resources/clients.xml"));
+			m.marshal(instance, new File("src/main/resources/clients.xml"));
 		} catch (JAXBException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -60,7 +60,7 @@ public class ClientDAO extends DAO<String,Client> implements interfaces.clients.
 		    Unmarshaller um = contexto.createUnmarshaller();
 		     
 		    //We had written this file in marshalling example
-		    newDDBB = (ClientDAO) um.unmarshal( new File("/home/juanmi_rivas_8/Desktop/OKBoomer/src/main/resources/clients.xml") );
+		    newDDBB = (ClientDAO) um.unmarshal( new File("src/main/resources/clients.xml") );
 	
 		} catch (JAXBException e) {
 			// TODO Auto-generated catch block

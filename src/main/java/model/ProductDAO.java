@@ -44,7 +44,7 @@ public class ProductDAO extends DAO<Integer,Product> implements interfaces.produ
 			Marshaller m = contexto.createMarshaller();
 			m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 			
-			m.marshal(instance, new File("/home/juanmi_rivas_8/Desktop/OKBoomer/src/main/resources/products.xml"));
+			m.marshal(instance, new File("src/main/resources/products.xml"));
 		} catch (JAXBException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -59,7 +59,7 @@ public class ProductDAO extends DAO<Integer,Product> implements interfaces.produ
 		    Unmarshaller um = contexto.createUnmarshaller();
 		     
 		    //We had written this file in marshalling example
-		    newDDBB = (ProductDAO) um.unmarshal( new File("/home/juanmi_rivas_8/Desktop/OKBoomer/src/main/resources/products.xml") );
+		    newDDBB = (ProductDAO) um.unmarshal( new File("src/main/resources/products.xml") );
 		} catch (JAXBException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
