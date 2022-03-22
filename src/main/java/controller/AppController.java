@@ -20,11 +20,13 @@ public class AppController extends API implements interfaces.IAppController{
 		int opcion = 0;
 		do {
 			view.printMainMenu();
-			opcion = view.readOption(0,15);
+			opcion = view.readOption(0,20);
 			if(opcion > 0 && opcion <= 5) {
 				clientController.clientMenu(opcion);
 			}else if(opcion > 5 && opcion <= 15) {
 				productController.productsMenu(opcion);
+			}else if(opcion > 15 && opcion <= 20){
+				reservationController.reservationsMenu(opcion);
 			}else {
 				exitProgram();
 			}
@@ -35,6 +37,5 @@ public class AppController extends API implements interfaces.IAppController{
 		save();
 		view.printExitProgram();
 	}
-	
 
 }

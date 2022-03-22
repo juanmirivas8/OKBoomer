@@ -9,7 +9,6 @@ public interface IItemDAO {
 	Collection<Item> listOfItemsByKey();
 	Collection<Item> listOfItemsByProductKey();
 	Collection<Item> listOfItemsByCondition();
-	
 	Boolean add(IItem i);
 	
 	IItem delete(Integer key);

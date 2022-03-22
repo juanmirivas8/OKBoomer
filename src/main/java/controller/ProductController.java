@@ -3,6 +3,12 @@ package controller;
 import interfaces.API;
 import interfaces.products.IItem;
 import interfaces.products.IProduct;
+import model.PreservationCondition;
+import model.Product;
+import model.Reservation;
+
+import java.util.ArrayList;
+import java.util.Collection;
 
 public class ProductController extends API implements interfaces.products.IProductsController{
 
@@ -45,12 +51,22 @@ public class ProductController extends API implements interfaces.products.IProdu
 	public void registerProduct() {
 		IProduct p = productView.readProduct();
 		Boolean res = products.add(p);
-		
+
+		if(res){
+			Integer nItems=0;
+			nItems = sc.readIntBucle("Insert number of copies: ",0,Integer.MAX_VALUE);
+
+			for (int i = 0; i < nItems;i++){
+				IItem copy = new model.Item(p.getID(), PreservationCondition.EXCELLENT);
+				items.add(copy);
+			}
+		}
 		view.operationResult(res);
 		
 	}
 	@Override
 	public void registerItem() {
+		productView.printProductList(products.listOfItemsByKey());
 		IItem i = productView.readItem();
 		if(products.search(i.getProductID())!=null) {
 			Boolean res = items.add(i);
@@ -62,6 +78,7 @@ public class ProductController extends API implements interfaces.products.IProdu
 	}
 	@Override
 	public void modifyProduct() {
+		productView.printProductList(products.listOfItemsByKey());
 		Integer id = view.readID();
 		IProduct p = products.search(id);
 		if( p != null) {
@@ -73,6 +90,7 @@ public class ProductController extends API implements interfaces.products.IProdu
 	}
 	@Override
 	public void modifyItem() {
+		productView.printItemList(items.listOfItemsByKey());
 		Integer id = view.readID();
 		IItem i = items.search(id);
 		
@@ -85,8 +103,8 @@ public class ProductController extends API implements interfaces.products.IProdu
 	}
 	@Override
 	public void deleteProduct() {
+		productView.printProductList(products.listOfItemsByKey());
 		Integer id = view.readID();
-		
 		Boolean finded = items.findProduct(id);
 		
 		IProduct p = null;
@@ -104,10 +122,12 @@ public class ProductController extends API implements interfaces.products.IProdu
 	}
 	@Override
 	public void deleteItem() {
+		productView.listItemsAvailable();
 		Integer id = view.readID();
-		IItem i = items.delete(id);
+		IItem i = items.search(id);
 		
-		if( i != null ) {
+		if( i != null && reservations.getReservations(i.getID()).size()==0) {
+			i = items.delete(id);
 			view.operationResult(true);
 			productView.printItem(i);
 		}else {
@@ -116,6 +136,7 @@ public class ProductController extends API implements interfaces.products.IProdu
 	}
 	@Override
 	public void searchProduct() {
+		productView.printProductList(products.listOfItemsByKey());
 		Integer id = view.readID();
 		IProduct p = products.search(id);
 		
@@ -128,6 +149,7 @@ public class ProductController extends API implements interfaces.products.IProdu
 	}
 	@Override
 	public void searchItem() {
+		productView.printItemList(items.listOfItemsByKey());
 		Integer id = view.readID();
 		IItem i = items.search(id);
 		
@@ -143,7 +165,7 @@ public class ProductController extends API implements interfaces.products.IProdu
 		do {
 			productView.printProductsListMenu();
 			
-			opcion = view.readOption(0, 5);
+			opcion = view.readOption(0, 6);
 			
 			switch (opcion) {
 				case 0 -> view.printReturnBack();
@@ -157,6 +179,9 @@ public class ProductController extends API implements interfaces.products.IProdu
 				case 4 -> productView.printProductList(products.listOfItemsByPrice());
 				
 				case 5 -> productView.printProductList(products.listOfItemsByRating());
+
+				case 6 -> productView.printProductList(listOfProductsWithActiveItems());
+
 			}
 		}while(opcion != 0);
 	}
@@ -166,7 +191,7 @@ public class ProductController extends API implements interfaces.products.IProdu
 		do {
 			productView.printItemsListMenu();
 			
-			opcion = view.readOption(0, 3);
+			opcion = view.readOption(0, 5);
 			
 			switch (opcion) {
 				case 0 -> view.printReturnBack();
@@ -176,8 +201,26 @@ public class ProductController extends API implements interfaces.products.IProdu
 				case 2 -> productView.printItemList(items.listOfItemsByProductKey());
 				
 				case 3 -> productView.printItemList(items.listOfItemsByCondition());
+
+				case 4 -> productView.listItemsReserved();
+
+				case 5 -> productView.listItemsAvailable();
 			}
 		}while(opcion != 0);
 	}
-	
+
+	public Collection<Product> listOfProductsWithActiveItems(){
+		Collection<Product> ret = new ArrayList<>();
+		Product p;
+
+			for(Reservation r:reservations.listOfReservationActive()){
+				p = products.search(items.search(r.getItemID()).getProductID());
+				if(!ret.contains(p)){
+					ret.add(p);
+				}
+			}
+
+		return ret;
+	}
+
 }

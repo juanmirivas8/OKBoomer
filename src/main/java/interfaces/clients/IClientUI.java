@@ -13,9 +13,15 @@ public interface IClientUI {
 	void printClient(IClient c);
 	
 	void printClientMenu();
-	
+
+	void printClientWithReservations(IClient c);
+
 	void printListMenu();
 
 	void printList(Collection<Client> c);
+
+	void listClientsWithActiveReservations();
+
+	void listClientsWithClosedReservations();
 
 }

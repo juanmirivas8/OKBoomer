@@ -1,10 +1,12 @@
 package view;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import interfaces.API;
 import interfaces.clients.IClient;
 import model.Client;
+import model.Reservation;
 
 public class ClientsUI extends API implements interfaces.clients.IClientUI{
 
@@ -46,7 +48,9 @@ public class ClientsUI extends API implements interfaces.clients.IClientUI{
 	
 	@Override
 	public void printClient(IClient c) {
-		System.out.println("\n"+c+"\n");
+
+		System.out.println("\n"+c+" - Active reservations: "+reservations.getActiveReservations(c.getDNI()).size()
+				+" - Closed reservations: "+reservations.getClosedReservations(c.getDNI()).size());
 	}
 
 	@Override
@@ -62,6 +66,7 @@ public class ClientsUI extends API implements interfaces.clients.IClientUI{
 		System.out.println("[3] -> Show clients by age");
 		System.out.println("[4] -> Show clients by phone number");
 		System.out.println("[5] -> Show clients by membership time");
+		System.out.println("[6] -> Show clients with active reservations");
 	}
 
 	@Override
@@ -74,6 +79,40 @@ public class ClientsUI extends API implements interfaces.clients.IClientUI{
 		System.out.println("|[4] -> List clients");
 		System.out.println("|[5] -> Find client\n");
 
+	}
+
+	@Override
+	public void printClientWithReservations(IClient c) {
+		this.printClient(c);
+		System.out.println("-------------------Active Reservations--------------------");
+		reservationView.printReservationList(reservations.getActiveReservations(c.getDNI()));
+		System.out.println("-------------------Closed Reservations--------------------");
+		reservationView.printReservationList(reservations.getClosedReservations(c.getDNI()));
+	}
+
+	@Override
+	public void listClientsWithActiveReservations() {
+		Collection<Client> cl = new ArrayList<>();
+		Client c = null;
+		for(Reservation r:reservations.listOfReservationActive()){
+			c=clients.search(r.getDNI());
+			if(!cl.contains(c)){
+				cl.add(c);
+			}
+		}
+
+		clientView.printList(cl);
+	}
+
+	@Override
+	public void listClientsWithClosedReservations() {
+		Collection<Client> cl = new ArrayList<>();
+		for(Client client:clients.listOfClientsByKey()){
+			if(reservations.getActiveReservations(client.getDNI()).size()==0){
+				cl.add(client);
+			}
+		}
+		clientView.printList(cl);
 	}
 
 }

@@ -1,8 +1,7 @@
 package model;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Collection;
+import java.util.*;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -78,7 +77,7 @@ public class ItemDAO extends DAO<Integer, Item> implements interfaces.products.I
 	public Collection<Item> listOfItemsByKey() {
 		// TODO Auto-generated method stub
 		ArrayList<Item> i = new ArrayList<>(ddbb.values());
-		i.sort( (i1,i2)-> i1.getID().compareTo(i2.getID()) );
+		i.sort(Comparator.comparing(Item::getID));
 		return i;
 	}
 
@@ -116,7 +115,7 @@ public class ItemDAO extends DAO<Integer, Item> implements interfaces.products.I
 	@Override
 	public Boolean findProduct(Integer id) {
 		for(Item c: ddbb.values()) {
-			if(c.getProductID() == id) {
+			if(Objects.equals(id, c.getProductID())) {
 				return true;
 			}
 		}

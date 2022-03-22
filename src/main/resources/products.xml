@@ -22,6 +22,16 @@
             </value>
         </entry>
         <entry>
+            <key xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:int">3</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="product">
+                <title>Inglorious Bastards</title>
+                <id>3</id>
+                <length>150</length>
+                <rating>MCRS18</rating>
+                <price>3.0</price>
+            </value>
+        </entry>
+        <entry>
             <key xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:int">4</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="product">
                 <title>Los miserables</title>
@@ -56,9 +66,9 @@
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="product">
                 <title>Jumanji</title>
                 <id>7</id>
-                <length>134</length>
+                <length>135</length>
                 <rating>MCRS3</rating>
-                <price>0.5</price>
+                <price>3.0</price>
             </value>
         </entry>
         <entry>
@@ -74,6 +84,5 @@
     </ddbb>
     <keygen>
         <count>9</count>
-        <deletedNumbers>3</deletedNumbers>
     </keygen>
 </productDAO>

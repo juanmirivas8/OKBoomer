@@ -1,5 +1,9 @@
 package interfaces.products;
 
+import model.Product;
+
+import java.util.Collection;
+
 public interface IProductsController {
 
 	void productsMenu(Integer opcion);
@@ -23,4 +27,6 @@ public interface IProductsController {
 	void listProducts();
 	
 	void listItems();
+
+	Collection<Product> listOfProductsWithActiveItems();
 }
