@@ -3,6 +3,10 @@ package controller;
 import interfaces.API;
 import interfaces.clients.IClient;
 import model.Client;
+import model.Reservation;
+
+import java.util.ArrayList;
+import java.util.Collection;
 
 public class ClientController extends API implements interfaces.clients.IClientController{
 
@@ -46,19 +50,22 @@ public class ClientController extends API implements interfaces.clients.IClientC
 
 	@Override
 	public void deleteClient() {
+		clientView.listClientsWithClosedReservations();
 		String dni = view.readDNI();
-		IClient c = clients.delete(dni);
+		IClient c = clients.search(dni);
 		
-		if(c == null) {
+		if(c == null ||reservations.getReservations(dni).size()>0) {
 			view.operationResult(false);
 		}else {
 			view.operationResult(true);
+			c = clients.delete(dni);
 			clientView.printClient(c);
 		}
 	}
 
 	@Override
 	public void modifyClient() {
+		clientView.printList(clients.listOfClientsByKey());
 		String dni = view.readDNI();
 		IClient c = clients.search(dni);
 		if(c != null) {
@@ -71,11 +78,12 @@ public class ClientController extends API implements interfaces.clients.IClientC
 
 	@Override
 	public void searchClient() {
+		clientView.printList(clients.listOfClientsByKey());
 		String dni = view.readDNI();
 		IClient c = clients.search(dni);
 		
 		if(c!=null) {
-			clientView.printClient(c);
+			clientView.printClientWithReservations(c);
 		}else {
 			view.operationResult(false);
 		}
@@ -87,7 +95,7 @@ public class ClientController extends API implements interfaces.clients.IClientC
 		
 		do {
 			clientView.printListMenu();
-			opcion = view.readOption(0,5);
+			opcion = view.readOption(0,6);
 			
 			switch (opcion) {
 				case 0 ->view.printReturnBack();
@@ -101,6 +109,8 @@ public class ClientController extends API implements interfaces.clients.IClientC
 				case 4 ->listClientsByPhoneNumber();
 				
 				case 5 ->listClientsByRegistrationDate();
+
+				case 6 ->clientView.listClientsWithActiveReservations();
 
 			}
 		}while(opcion!=0);
@@ -130,5 +140,5 @@ public class ClientController extends API implements interfaces.clients.IClientC
 	public void listClientsByRegistrationDate() {
 		clientView.printList(clients.listOfClientsByRegistrationDate());
 	}
-	
+
 }

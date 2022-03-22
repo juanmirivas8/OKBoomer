@@ -11,19 +11,19 @@ public interface IReservation {
 	void setExpectedDevolutionDate(LocalDateTime date)throws IllegalArgumentException;
 	
 	LocalDateTime getReturnDate();
-	void setDevolutionDate(LocalDateTime date)throws IllegalArgumentException;
+	void setReturnDate(LocalDateTime date)throws IllegalArgumentException;
 	
-	String getClientDNI();
-	void setClientDNI(String DNI)throws IllegalArgumentException; 
+	String getDNI();
+	void setDNI(String DNI)throws IllegalArgumentException;
 	
-	String getItemID();
+	Integer getItemID();
 	void setItemID(Integer id)throws IllegalArgumentException;
 	
 	Boolean getStatus();
 	void setStatus(Boolean status)throws IllegalArgumentException;
 	
 	Integer getID();
-	void setID()throws IllegalArgumentException;
+	void setID(Integer id)throws IllegalArgumentException;
 	
 	@Override
 	public int hashCode();

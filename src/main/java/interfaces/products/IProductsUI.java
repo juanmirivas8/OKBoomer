@@ -25,4 +25,8 @@ public interface IProductsUI {
 	
 	void printItemList(Collection<Item> p);
 
+	void listItemsReserved();
+
+	void listItemsAvailable();
+
 }

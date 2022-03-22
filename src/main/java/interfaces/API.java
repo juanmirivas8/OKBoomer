@@ -1,5 +1,6 @@
 package interfaces;
 
+import controller.ReservationController;
 import interfaces.clients.IClientController;
 import interfaces.clients.IClientDAO;
 import interfaces.clients.IClientUI;
@@ -14,10 +15,8 @@ import model.ClientDAO;
 import model.ItemDAO;
 import model.ProductDAO;
 import controller.ClientController;
-import view.ClientsUI;
-import view.Escaner;
-import view.ProductsUI;
-import view.UI;
+import model.ReservationDAO;
+import view.*;
 import controller.AppController;
 import controller.ProductController;
 
@@ -53,7 +52,10 @@ public abstract class API {
 			items = ItemDAO.newInstance();
 			productController = ProductController.newInstance();
 			productView = ProductsUI.newInstance();
-			
+
+			reservations= ReservationDAO.newInstance();
+			reservationView= ReservationsUI.newInstance();
+			reservationController= ReservationController.newInstance();
 		}	
 	}
 	
@@ -63,6 +65,7 @@ public abstract class API {
 		clients.save();
 		products.save();
 		items.save();
+		reservations.save();
 	}
 	
 }

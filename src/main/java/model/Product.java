@@ -3,6 +3,7 @@ package model;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.util.Objects;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -108,7 +109,17 @@ public class Product implements interfaces.products.IProduct{
 		return title + " ,ID = " + id + " ,Length (minutes) = " + length + " ,Rating = " + rating + " ,Price(euro/day) = "
 				+ price;
 	}
-	
-	
-	
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		Product product = (Product) o;
+		return id.equals(product.id);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
 }

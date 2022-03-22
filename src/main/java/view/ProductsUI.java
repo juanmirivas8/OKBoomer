@@ -1,13 +1,12 @@
 package view;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import interfaces.products.IItem;
 import interfaces.products.IProduct;
-import model.Item;
-import model.MCRS;
-import model.PreservationCondition;
-import model.Product;
+import interfaces.reservations.IReservation;
+import model.*;
 
 public class ProductsUI extends interfaces.API implements interfaces.products.IProductsUI {
 	
@@ -36,6 +35,7 @@ public class ProductsUI extends interfaces.API implements interfaces.products.IP
 
 	@Override
 	public IItem readItem() {
+		printProductList(products.listOfItemsByKey());
 		Integer ProductID = sc.readIntBucle("Insert ProductID");
 		PreservationCondition condition = (PreservationCondition)sc.readEnumBucle("Enter a PreservationCondition", PreservationCondition.class);
 		return new Item(ProductID, condition);
@@ -55,25 +55,33 @@ public class ProductsUI extends interfaces.API implements interfaces.products.IP
 
 	@Override
 	public void modifyItem(IItem i) {
-		Integer ProductID = sc.readIntBucle("Insert Product ID: ");
 		PreservationCondition condition = (PreservationCondition)sc.readEnumBucle("Enter the preservation condition: ", PreservationCondition.class);
-		i.setID(ProductID);
 		i.setPreservationCondition(condition);
 	}
 
 	@Override
 	public void printProduct(IProduct p) {
+
+		Integer cont=0;
+
+		Collection<Reservation> c = reservations.listOfReservationActive();
+
+		for(Reservation res:c){
+			if(items.search(res.getItemID()).getProductID() == p.getID()){
+				cont++;
+			}
+		}
 		System.out.println("");
-		System.out.println(p);
-		System.out.println("");
+		System.out.println(p+" - copies reserved: "+cont);
 		
 	}
 
 	@Override
 	public void printItem(IItem i) {
+		IReservation r = reservations.getOpenReservation(i.getID());
+		String status = (r != null)?("Reserved"):("Available");
 		System.out.println("");
-		System.out.println("Title: "+products.search(i.getProductID()).getTitle() +" - "+ i);
-		System.out.println("");
+		System.out.println("Title: "+products.search(i.getProductID()).getTitle() +" - "+ i + " - Status: "+status);
 		
 	}
 
@@ -99,6 +107,7 @@ public class ProductsUI extends interfaces.API implements interfaces.products.IP
 		System.out.println("[3] -> Show products by length");
 		System.out.println("[4] -> Show products by price");
 		System.out.println("[5] -> Show products by rating");
+		System.out.println("[6] -> Show products with active items");
 		
 	}
 
@@ -108,6 +117,8 @@ public class ProductsUI extends interfaces.API implements interfaces.products.IP
 		System.out.println("[1] -> Show items by id");
 		System.out.println("[2] -> Show items by ProductID");
 		System.out.println("[3] -> Show items by condition");
+		System.out.println("[4] -> Show items reserved");
+		System.out.println("[5] -> Show items available");
 		
 	}
 
@@ -121,6 +132,29 @@ public class ProductsUI extends interfaces.API implements interfaces.products.IP
 	public void printItemList(Collection<Item> i) {
 		i.forEach(x->printItem(x));
 		
+	}
+
+	@Override
+	public void listItemsReserved() {
+		Collection<Item> it = new ArrayList<>();
+
+		for(Reservation r:reservations.listOfReservationActive()){
+			it.add(items.search(r.getItemID()));
+		}
+
+		this.printItemList(it);
+	}
+
+	@Override
+	public void listItemsAvailable() {
+		Collection<Item> i = new ArrayList<>();
+		for(Item it:items.listOfItemsByKey()){
+			if(reservations.getOpenReservation(it.getID())==null){
+				i.add(it);
+			}
+		}
+
+		this.printItemList(i);
 	}
 
 }

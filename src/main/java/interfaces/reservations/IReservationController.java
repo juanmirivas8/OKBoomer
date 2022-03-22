@@ -1,7 +1,7 @@
 package interfaces.reservations;
 
 public interface IReservationController {
-	void productsMenu(Integer opcion);
+	void reservationsMenu(Integer opcion);
 	
 	void makeReservation();
 	

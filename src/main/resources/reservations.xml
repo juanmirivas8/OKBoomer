@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<reservationDAO>
+    <ddbb>
+        <entry>
+            <key xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:int">2</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="reservation">
+                <itemID>3</itemID>
+                <dni>00000000A</dni>
+                <id>2</id>
+                <withdrawalDate>2022-03-21 22:31:50:35</withdrawalDate>
+                <expectedReturnDate>2022-03-23 00:00:00:00</expectedReturnDate>
+                <realReturnDate>2022-03-22 02:18:04:04</realReturnDate>
+                <status>false</status>
+            </value>
+        </entry>
+        <entry>
+            <key xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:int">3</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="reservation">
+                <itemID>1</itemID>
+                <dni>00000000A</dni>
+                <id>3</id>
+                <withdrawalDate>2022-03-22 00:26:26:81</withdrawalDate>
+                <expectedReturnDate>2022-04-03 00:00:00:00</expectedReturnDate>
+                <realReturnDate>2022-03-22 02:12:33:64</realReturnDate>
+                <status>false</status>
+            </value>
+        </entry>
+    </ddbb>
+    <keygen>
+        <count>4</count>
+        <deletedNumbers>1</deletedNumbers>
+    </keygen>
+</reservationDAO>
