@@ -209,7 +209,7 @@ public class ReservationDAO extends DAO<Integer,Reservation> implements IReserva
 			Marshaller m = c.createMarshaller();
 			m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 
-			m.marshal(instance, new File("/home/juanmi_rivas_8/Desktop/OKBoomer/src/main/resources/reservations.xml"));
+			m.marshal(instance, new File("src/main/resources/reservations.xml"));
 		} catch (JAXBException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -225,7 +225,7 @@ public class ReservationDAO extends DAO<Integer,Reservation> implements IReserva
 			c = JAXBContext.newInstance(ReservationDAO.class);
 			Unmarshaller um = c.createUnmarshaller();
 
-			newDDBB = (ReservationDAO) um.unmarshal(new File("/home/juanmi_rivas_8/Desktop/OKBoomer/src/main/resources/reservations.xml"));
+			newDDBB = (ReservationDAO) um.unmarshal(new File("src/main/resources/reservations.xml"));
 		} catch (JAXBException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

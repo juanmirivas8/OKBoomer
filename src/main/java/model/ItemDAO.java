@@ -48,7 +48,7 @@ public class ItemDAO extends DAO<Integer, Item> implements interfaces.products.I
 			Marshaller m = c.createMarshaller();
 			m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 			
-			m.marshal(instance, new File("/home/juanmi_rivas_8/Desktop/OKBoomer/src/main/resources/item.xml"));
+			m.marshal(instance, new File("src/main/resources/item.xml"));
 		} catch (JAXBException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -64,7 +64,7 @@ public class ItemDAO extends DAO<Integer, Item> implements interfaces.products.I
 			c = JAXBContext.newInstance(ItemDAO.class);
 			Unmarshaller um = c.createUnmarshaller();
 			
-			newDDBB = (ItemDAO) um.unmarshal(new File("/home/juanmi_rivas_8/Desktop/OKBoomer/src/main/resources/item.xml"));
+			newDDBB = (ItemDAO) um.unmarshal(new File("src/main/resources/item.xml"));
 		} catch (JAXBException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
